@@ -41,10 +41,10 @@ export default function GitHubSearch({
     const result = { items: resp.body.items, link: {} };
     if (resp.headers.link) {
       const links = headerParser(resp.headers.link);
-      result.link = Object.entries(links).reduce(
-        (link, [key, value]) => ({
+      result.link = Object.keys(links).reduce(
+        (link, key) => ({
           ...link,
-          [key]: () => linkContinuation(value.url)
+          [key]: () => linkContinuation(links[key].url)
         }),
         {}
       );

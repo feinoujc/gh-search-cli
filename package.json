@@ -1,6 +1,6 @@
 {
   "name": "gh-search-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "searches github.com",
   "main": "cli.js",
   "bin": {
@@ -10,15 +10,27 @@
     "type": "git",
     "url": "git@github.com:feinoujc/gh-search-cli.git"
   },
+  "keywords": [
+    "github",
+    "api",
+    "search",
+    "issues",
+    "commits",
+    "repositories",
+    "code",
+    "command line",
+    "cli"
+  ],
   "engineStrict": true,
   "engines:": {
-    "node": ">=8.0.0"
+    "node": ">=6.0.0"
   },
   "config": {
     "test": "test/**/*.test.js",
     "prettier": "**/*.{js,json}"
   },
   "scripts": {
+    "prepublishOnly": "npm run build",
     "prebuild": "npm run clean",
     "build": "babel src -D -d dist -s",
     "clean": "rm -rf .nyc_output coverage dist",

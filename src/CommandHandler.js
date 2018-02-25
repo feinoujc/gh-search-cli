@@ -219,7 +219,15 @@ export default function handler(ghSearch) {
       });
 
     if (!qs.length) {
-      throw new Error('No arguments');
+      const command = opts.parent.commands.find(
+        ({ _name: name }) => name === type
+      );
+
+      /* istanbul ignore else */
+      if (command) {
+        command.help();
+      }
+      return Bluebird.resolve();
     }
     return Bluebird.using(getReadline(), rl =>
       ghSearch(type, qs.join(' '), _.pick(opts, ['sort', 'order']))
