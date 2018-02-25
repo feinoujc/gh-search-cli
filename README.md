@@ -3,7 +3,7 @@
 [![npm version](https://badge.fury.io/js/gh-search-cli.svg)](https://badge.fury.io/js/gh-search-cli)
 [![Build Status](https://travis-ci.org/feinoujc/gh-search-cli.svg?branch=master)](https://travis-ci.org/feinoujc/gh-search-cli)
 
-provides a cli for searching github.com. Supports repo, code, issues and commit searches. Can be configured for github enteriprise instances as well.
+provides a cli for searching github.com. Supports repo, code, issues and commit searches. Can be configured for github enterprise instances as well.
 
 ```shell
 ~ ghs --help

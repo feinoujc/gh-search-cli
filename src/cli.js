@@ -10,8 +10,10 @@ const token = process.env.GITHUB_API_TOKEN; // eslint-disable-line no-process-en
 const baseUrl = process.env.GITHUB_API_BASE_URL || undefined; // eslint-disable-line no-process-env
 const handler = getHandler(GitHubSearch({ apiToken: token, baseUrl }));
 
+/* istanbul ignore next */
 program.version(pkg.version);
 
+/* istanbul ignore next */
 program
   .command('repositories [query]')
   .description('search repositories')
@@ -72,6 +74,7 @@ program
   )
   .action(handler);
 
+/* istanbul ignore next */
 program
   .command('code [query]')
   .description('search code')
@@ -115,6 +118,7 @@ program
   )
   .action(handler);
 
+/* istanbul ignore next */
 program
   .command('issues [query]')
   .description('search issues')
@@ -220,6 +224,7 @@ program
   )
   .action(handler);
 
+/* istanbul ignore next */
 program
   .command('commits [query]')
   .description('search commits')
@@ -287,5 +292,12 @@ program
   )
   .action(handler);
 
+/* istanbul ignore next */
 const command = program.parse(process.argv);
+
+/* istanbul ignore next */
+if (command.args.length < 2) {
+  command.help();
+  process.exit(-1);
+}
 debug(command);

@@ -195,13 +195,24 @@ describe('command handler', function() {
     );
   });
 
-  it('should throw on no args', function() {
+  it('should call help function on invalid command with no args', function() {
+    const help = sinon.spy();
     const handler = getHandler(this.sandbox.stub(search, 'default'));
-    const options = buildOptions({ name: 'commits' });
+    const options = buildOptions({
+      name: 'commits',
+      parent: {
+        commands: [
+          {
+            _name: 'commits',
+            help
+          }
+        ]
+      }
+    });
 
-    return handler(null, options)
-      .then(assert.fail)
-      .catch(err => assert.ok(err.message.includes('arguments'), err));
+    return handler(null, options).then(() =>
+      assert.strictEqual(help.callCount, 1)
+    );
   });
 
   it('should user current user for user flags', function() {
