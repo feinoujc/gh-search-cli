@@ -1,0 +1,76 @@
+{
+  "name": "gh-search-cli",
+  "version": "1.0.0",
+  "description": "searches github.com",
+  "main": "cli.js",
+  "bin": {
+    "ghs": "./dist/cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:feinoujc/gh-search-cli.git"
+  },
+  "engineStrict": true,
+  "engines:": {
+    "node": ">=8.0.0"
+  },
+  "config": {
+    "test": "test/**/*.test.js",
+    "prettier": "**/*.{js,json}"
+  },
+  "scripts": {
+    "prebuild": "npm run clean",
+    "build": "babel src -D -d dist -s",
+    "clean": "rm -rf .nyc_output coverage dist",
+    "eslint": "eslint .",
+    "format": "prettier --write \"$npm_package_config_prettier\"",
+    "lint": "npm run eslint",
+    "mocha": "mocha -r babel-register",
+    "precommit": "lint-staged",
+    "start": "npm run build && node ./dist/cli",
+    "pretest": "npm run lint",
+    "test": "npm run unit",
+    "unit": "BABEL_ENV=test nyc mocha -r babel-register \"$npm_package_config_test\""
+  },
+  "lint-staged": {
+    "**/*.{js,json}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "author": "feinoujc",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "colors": "^1.1.2",
+    "commander": "^2.9.0",
+    "debug": "^2.5.1",
+    "git-user-name": "^1.2.0",
+    "lodash": "^4.17.5",
+    "open": "0.0.5",
+    "parse-link-header": "^0.4.1",
+    "request": "^2.79.0",
+    "request-debug": "^0.2.0",
+    "request-promise": "^4.2.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.1",
+    "babel-plugin-istanbul": "^4.1.4",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-standard": "^1.6.6",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-mocha": "^4.11.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^6.1.0",
+    "mocha": "^5.0.1",
+    "nock": "^9.2.0",
+    "nyc": "^11.1.0",
+    "prettier": "^1.10.2",
+    "sinon": "^4.4.1"
+  }
+}
