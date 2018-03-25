@@ -1,5 +1,6 @@
-node_modules/
-npm-debug.log
-coverage/
-dist/
-.nyc_output/
+*-debug.log
+*-error.log
+.oclif.manifest.json
+/lib
+/node_modules
+/tmp
