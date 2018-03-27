@@ -31,7 +31,7 @@ $ npm install -g gh-search-cli
 $ ghs COMMAND
 running command...
 $ ghs (-v|--version|version)
-gh-search-cli/2.0.0-pre darwin-x64 node-v8.9.1
+gh-search-cli/2.0.0 darwin-x64 node-v8.9.1
 $ ghs --help [COMMAND]
 USAGE
   $ ghs COMMAND
@@ -90,7 +90,7 @@ EXAMPLE
   $ ghs code --extension js "import _ from 'lodash'"
 ```
 
-_See code: [src/commands/code.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.0.0-pre/src/commands/code.ts)_
+_See code: [src/commands/code.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.0.0/src/commands/code.ts)_
 
 ## ghs commits [QUERY]
 
@@ -149,7 +149,7 @@ EXAMPLE
   $ ghs commit --repo octocat/Spoon-Knife css
 ```
 
-_See code: [src/commands/commits.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.0.0-pre/src/commands/commits.ts)_
+_See code: [src/commands/commits.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.0.0/src/commands/commits.ts)_
 
 ## ghs help [COMMAND]
 
@@ -260,7 +260,7 @@ EXAMPLE
   $ ghs issues --is open --involves my-github-username
 ```
 
-_See code: [src/commands/issues.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.0.0-pre/src/commands/issues.ts)_
+_See code: [src/commands/issues.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.0.0/src/commands/issues.ts)_
 
 ## ghs repositories [QUERY]
 
@@ -315,5 +315,5 @@ EXAMPLE
      GoogleChrome/puppeteer (https://github.com/GoogleChrome/puppeteer)
 ```
 
-_See code: [src/commands/repositories.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.0.0-pre/src/commands/repositories.ts)_
+_See code: [src/commands/repositories.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.0.0/src/commands/repositories.ts)_
 <!-- commandsstop -->
