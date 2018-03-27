@@ -1,17 +1,20 @@
-# gh-search-cli
+gh-search-cli
+=============
+Provides a cli for searching github.com. Supports repositories, code, issues and commits. Can be configured for github enterprise instances as well. Built using [oclif](https://github.com/oclif/oclif)
 
-[![npm version](https://badge.fury.io/js/gh-search-cli.svg)](https://badge.fury.io/js/gh-search-cli)
-[![Build Status](https://travis-ci.org/feinoujc/gh-search-cli.svg?branch=master)](https://travis-ci.org/feinoujc/gh-search-cli)
+[![Version](https://img.shields.io/npm/v/gh-search-cli.svg)](https://npmjs.org/package/gh-search-cli)
+[![CircleCI](https://circleci.com/gh/feinoujc/gh-search-cli/tree/master.svg?style=shield)](https://circleci.com/gh/feinoujc/gh-search-cli/tree/master)
+[![Appveyor CI](https://ci.appveyor.com/api/projects/status/github/feinoujc/gh-search-cli?branch=master&svg=true)](https://ci.appveyor.com/project/feinoujc/gh-search-cli/branch/master)
+[![Codecov](https://codecov.io/gh/feinoujc/gh-search-cli/branch/master/graph/badge.svg)](https://codecov.io/gh/feinoujc/gh-search-cli)
+[![License](https://img.shields.io/npm/l/gh-search-cli.svg)](https://github.com/feinoujc/gh-search-cli/blob/master/package.json)
 
-provides a cli for searching github.com. Supports repo, code, issues and commit searches. Can be configured for github enterprise instances as well.
+<!-- toc -->
+* [Setup](#setup)
+* [Usage](#usage)
+* [Commands](#commands)
+<!-- tocstop -->
 
-```shell
-~ ghs --help
-~ ghs repo --help
-~ ghs issues --help
-~ ghs code --help
-~ ghs commits --help
-```
+# Setup
 
 The cli requires a personal access token (no scope needed) https://github.com/settings/tokens/new
 
@@ -21,10 +24,296 @@ if you want to search github enterprise you need to also set GITHUB_API_BASE_URL
 
 example: `export GITHUB_API_BASE_URL='https://github.acme.com/api/v3'`
 
-Parameters that expect a username will default to the current configured git username if left empty. for example:
+# Usage
+<!-- usage -->
+```sh-session
+$ npm install -g gh-search-cli
+$ ghs COMMAND
+running command...
+$ ghs (-v|--version|version)
+gh-search-cli/2.0.0-pre darwin-x64 node-v8.9.1
+$ ghs --help [COMMAND]
+USAGE
+  $ ghs COMMAND
+...
+```
+<!-- usagestop -->
+# Commands
+<!-- commands -->
+* [ghs code [QUERY]](#ghs-code-query)
+* [ghs commits [QUERY]](#ghs-commits-query)
+* [ghs help [COMMAND]](#ghs-help-command)
+* [ghs issues [QUERY]](#ghs-issues-query)
+* [ghs repositories [QUERY]](#ghs-repositories-query)
 
-```shell
-~ ghs issues --is open --author
+## ghs code [QUERY]
+
+search github code. https://developer.github.com/v3/search/#search-code
+
+```
+USAGE
+  $ ghs code [QUERY]
+
+OPTIONS
+  -j, --json                   Return json. Can be piped to jq.
+  -l, --language=language      Searches code based on the language it's written in.
+  -o, --open                   Open the first result in your browser.
+  -r, --repo=repo              Limits searches to a specific repository.
+
+  -s, --sort=(indexed)         The sort field. Can only be indexed, which indicates how recently a file has been indexed
+                               by the GitHub search infrastructure. Default: results are sorted by best match.
+
+  -t, --text                   Show full text match
+
+  -u, --user=user              Limits searches to a specific user. Use --current-user to use the currently configured
+                               git username.
+
+  --api-base-url=api-base-url  [default: https://api.github.com] The github api token. Defaults to env
+                               GITHUB_API_BASE_URL or 'https://api.github.com'
+
+  --api-token=api-token        (required) The github api token. Defaults to env GITHUB_API_TOKEN.
+
+  --extension=extension        Matches files with a certain extension after a dot.
+
+  --filename=filename          Matches files by a substring of the filename.
+
+  --in=in                      Qualifies which fields are searched. With this qualifier you can restrict the search to
+                               the file contents (file), the file path (path), or both.
+
+  --order=(asc|desc)           The sort order if sort parameter is provided. Default: desc
+
+  --path=path                  Specifies the path prefix that the resulting file must be under.
+
+  --size=size                  Finds files that match a certain size (in bytes).
+
+EXAMPLE
+  $ ghs code --extension js "import _ from 'lodash'"
 ```
 
-will search for open issues for the current git username
+_See code: [src/commands/code.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.0.0-pre/src/commands/code.ts)_
+
+## ghs commits [QUERY]
+
+search github commits. https://developer.github.com/v3/search/#search-commits
+
+```
+USAGE
+  $ ghs commits [QUERY]
+
+OPTIONS
+  -j, --json                               Return json. Can be piped to jq.
+  -o, --open                               Open the first result in your browser.
+
+  -s, --sort=(author-date|committer-date)  The sort field. Can be author-date or committer-date. Default: results are
+                                           sorted by best match.
+
+  --api-base-url=api-base-url              [default: https://api.github.com] The github api token. Defaults to env
+                                           GITHUB_API_BASE_URL or 'https://api.github.com'
+
+  --api-token=api-token                    (required) The github api token. Defaults to env GITHUB_API_TOKEN.
+
+  --author=author                          Matches commits authored by a user (based on email settings).
+
+  --author-date=author-date                Matches commits by author date range.
+
+  --author-email=author-email              Matches commits by author email.
+
+  --author-name=author-name                Matches commits by author name.
+
+  --committer=committer                    Matches commits committed by a user (based on email settings).
+
+  --committer-date=committer-date          Matches commits by committer date range.
+
+  --committer-email=committer-email        Matches commits by committer email.
+
+  --committer-name=committer-name          Matches commits by committer name.
+
+  --hash=hash                              Matches commits by hash.
+
+  --is=(public|private)                    Matches public or private repositories.
+
+  --merge                                  --merge filters to merge commits, --no-merge filters out merge commits.
+
+  --order=(asc|desc)                       The sort order if sort parameter is provided. Default: desc
+
+  --org=org                                Limits searches to a specific organization.
+
+  --parent=parent                          Matches commits that have a particular parent.
+
+  --repo=repo                              Limits searches to a specific repository.
+
+  --user=user                              Limits searches to a specific user. Use --current-user to use the currently
+                                           configured git username.
+
+EXAMPLE
+  $ ghs commit --repo octocat/Spoon-Knife css
+```
+
+_See code: [src/commands/commits.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.0.0-pre/src/commands/commits.ts)_
+
+## ghs help [COMMAND]
+
+display help for ghs
+
+```
+USAGE
+  $ ghs help [COMMAND]
+
+ARGUMENTS
+  COMMAND  command to show help for
+
+OPTIONS
+  --all  see all commands in CLI
+```
+
+_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v1.2.1/src/commands/help.ts)_
+
+## ghs issues [QUERY]
+
+search github issues. https://developer.github.com/v3/search/#search-issues
+
+```
+USAGE
+  $ ghs issues [QUERY]
+
+OPTIONS
+  -c, --created=created                  Filters issues or pull requests based on date of creation,or when they were
+                                         last updated.
+
+  -j, --json                             Return json. Can be piped to jq.
+
+  -l, --language=language                Searches for issues or pull requests within repositories that match a certain
+                                         language.
+
+  -m, --merged=merged                    Filters pull requests based on the date when they were merged.
+
+  -o, --open                             Open the first result in your browser.
+
+  -r, --repo=repo                        Limits searches to a specific repository.
+
+  -s, --sort=(comments|created|updated)  The sort field. Default: results are sorted by best match.
+
+  -s, --status=status                    Filters pull requests based on the commit status.
+
+  -t, --type=(issue|pr)                  With this qualifier you can restrict the search to issues (issue) or pull
+                                         request (pr) only.
+
+  -u, --updated=updated                  Filters issues or pull requests based on date of creation, or when they were
+                                         last updated.
+
+  -u, --user=user                        Limits searches to a specific user. Use --current-user to use the currently
+                                         configured git username.
+
+  --api-base-url=api-base-url            [default: https://api.github.com] The github api token. Defaults to env
+                                         GITHUB_API_BASE_URL or 'https://api.github.com'
+
+  --api-token=api-token                  (required) The github api token. Defaults to env GITHUB_API_TOKEN.
+
+  --archived                             Filters issues or pull requests based on whether they are in an archived
+                                         repository.
+
+  --assignee=assignee                    Finds issues or pull requeststhat are assigned to a certain user. Use
+                                         --current-author to use the currently configured git username.
+
+  --author=author                        Finds issues or pull requests created by a certain user. Use --current-author
+                                         to use the currently configured git username.
+
+  --base=base                            Filters pull requests based on the branch that they came from.
+
+  --closed=closed                        Filters issues or pull requests based on the date when they were closed.
+
+  --commenter=commenter                  Finds issues or pull requests that a certain user commented on. Use
+                                         --current-commenter to use the currently configured git username.
+
+  --comments=comments                    Filters issues or pull requests based on the quantity of comments.
+
+  --head=head                            Filters pull requests based on the branch that they are modifying.
+
+  --in=in                                Qualifies which fields are searched. With this qualifier you can restrict the
+                                         searchto just the title (title), body (body), comments (comments), or any
+                                         combination of these.
+
+  --involves=involves                    Finds issues or pull requests that were either created by a certain user,
+                                         assigned to that user, mention that user, or were commented on by that user.
+                                         Use --current-involves to use the currently configured git username.
+
+  --is=is                                Searches for items within repositories that match a certain state, such as
+                                         open, closed, or merged
+
+  --labels=labels                        Filters issues or pull requests based on their labels.
+
+  --mentions=mentions                    Finds issues or pull requests that mention a certain user. Use --current-author
+                                         to use the currently configured git username.
+
+  --no=no                                Filters items missing certain metadata, such as label, milestone, or assignee
+
+  --order=(asc|desc)                     The sort order if sort parameter is provided. Default: desc
+
+  --project=project                      Limits searches to a specific project board in a repository or organization.
+
+  --state=(open|closed)                  Filter issues or pull requests based on whether they're open or closed.
+
+  --team=team                            For organizations you're a member of, finds issues or pull requests that
+                                         @mention a team within the organization.
+
+EXAMPLE
+  $ ghs issues --is open --involves my-github-username
+```
+
+_See code: [src/commands/issues.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.0.0-pre/src/commands/issues.ts)_
+
+## ghs repositories [QUERY]
+
+search github repositories. https://developer.github.com/v3/search/#search-repositories
+
+```
+USAGE
+  $ ghs repositories [QUERY]
+
+OPTIONS
+  -c, --created=created             Filters repositories based on date of creation, or when they were last updated.
+  -f, --fork                        Filters whether forked repositories should be included (--fork) or not (--no-fork).
+  -j, --json                        Return json. Can be piped to jq.
+  -l, --language=language           Searches repositories based on the language they're written in.
+  -o, --open                        Open the first result in your browser.
+  -p, --pushed=pushed               Filters repositories based on date of creation, or when they were last updated.
+  -r, --repo=repo                   Limits searches to a specific repo.
+  -s, --sort=(stars|forks|updated)  The sort field. Default: results are sorted by best match.
+
+  -u, --user=user                   Limits searches to a specific user. Use --current-user to filter on current github
+                                    username
+
+  --api-base-url=api-base-url       [default: https://api.github.com] The github api token. Defaults to env
+                                    GITHUB_API_BASE_URL or 'https://api.github.com'
+
+  --api-token=api-token             (required) The github api token. Defaults to env GITHUB_API_TOKEN.
+
+  --archived                        Filters whether archived repositories should be included (--archived) or not
+                                    (--no-archived).
+
+  --forks=forks                     Filters repositories based on the number of forks.
+
+  --in=in                           Qualifies which fields are searched. With this qualifier you can restrict the search
+                                    to just the repository name, description, readme, or any combination of these.
+
+  --license=license                 Filters repositories by license or license family, using the license keyword.
+
+  --order=(asc|desc)                The sort order if sort parameter is provided. Default: desc
+
+  --size=size                       Finds repositories that match a certain size (in kilobytes).
+
+  --stars=stars                     Searches repositories based on the number of stars.
+
+  --topic=topic                     Filters repositories based on the specified topic.
+
+ALIASES
+  $ ghs repo
+  $ ghs repository
+
+EXAMPLE
+  $ ghs repo puppeteer
+     GoogleChrome/puppeteer (https://github.com/GoogleChrome/puppeteer)
+```
+
+_See code: [src/commands/repositories.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.0.0-pre/src/commands/repositories.ts)_
+<!-- commandsstop -->
