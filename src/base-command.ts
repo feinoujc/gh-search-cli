@@ -3,6 +3,7 @@ import cli, {Table} from 'cli-ux'
 import {StatusCodeError} from 'request-promise-native/errors'
 
 import search, {ApiResponse} from './api'
+import AuthFile from './auth-file'
 import git from './git-user-name'
 import opener from './opener'
 import paginator from './pagination'
@@ -18,20 +19,16 @@ export type TableResult = {
   options: Partial<Table.TableOptions>
 }
 
-export default abstract class extends Command {
+export default abstract class BaseCommand extends Command {
   static args = [{name: 'query'}]
 
   static flags = {
     ['api-token']: flags.string({
-      env: 'GITHUB_API_TOKEN',
-      description: 'The github api token. Defaults to env GITHUB_API_TOKEN.',
-      required: true
+      description: 'The github api token. Defaults to configured api token',
     }),
     ['api-base-url']: flags.string({
-      env: 'GITHUB_API_BASE_URL',
-      default: 'https://api.github.com',
       description:
-        "The github api token. Defaults to env GITHUB_API_BASE_URL or 'https://api.github.com'"
+        "The github api token. Defaults to configured GHE url or 'https://api.github.com'"
     }),
     open: flags.boolean({
       char: 'o',
@@ -72,9 +69,12 @@ export default abstract class extends Command {
       qs.push(args.query)
     }
 
-    const {
+    let {
       ['api-token']: apiToken,
       ['api-base-url']: baseUrl,
+    } = flags
+
+    const {
       sort,
       order,
       open,
@@ -96,6 +96,18 @@ export default abstract class extends Command {
     if (!qs.length) {
       this._help()
       return this.exit(-1)
+    }
+    const authFile = new AuthFile(this.config)
+    const authConfig = await authFile.getConfig()
+    this.debug('auth config: %o', authConfig)
+    if (!apiToken && authConfig) {
+      apiToken = authConfig.token
+    }
+
+    if (!baseUrl && authConfig) {
+      baseUrl = authConfig.baseUrl
+    } else if (!baseUrl) {
+      baseUrl = 'https://api.github.com'
     }
 
     const type = `${this.id}`

@@ -16,13 +16,10 @@ Provides a cli for searching github.com. Supports repositories, code, issues and
 
 # Setup
 
-The cli requires a personal access token (no scope needed) https://github.com/settings/tokens/new
+The cli requires a personal access token (no scope needed). The cli will create a new token on the first run and store it for future use. If you prefer you can use your own token and config the cli yourself (see [ghs config](#ghs-config))
 
-in .zshrc/.bashrc: `export GITHUB_API_TOKEN=xxxx`
+_See code: [src/hooks/init/auth.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.1.0/src/hooks/init/auth.ts)_
 
-if you want to search github enterprise you need to also set GITHUB_API_BASE_URL
-
-example: `export GITHUB_API_BASE_URL='https://github.acme.com/api/v3'`
 
 # Usage
 <!-- usage -->
@@ -31,7 +28,7 @@ $ npm install -g gh-search-cli
 $ ghs COMMAND
 running command...
 $ ghs (-v|--version|version)
-gh-search-cli/2.0.0 darwin-x64 node-v8.9.1
+gh-search-cli/2.1.0 darwin-x64 node-v8.9.1
 $ ghs --help [COMMAND]
 USAGE
   $ ghs COMMAND
@@ -42,6 +39,7 @@ USAGE
 <!-- commands -->
 * [ghs code [QUERY]](#ghs-code-query)
 * [ghs commits [QUERY]](#ghs-commits-query)
+* [ghs config](#ghs-config)
 * [ghs help [COMMAND]](#ghs-help-command)
 * [ghs issues [QUERY]](#ghs-issues-query)
 * [ghs repositories [QUERY]](#ghs-repositories-query)
@@ -68,10 +66,9 @@ OPTIONS
   -u, --user=user              Limits searches to a specific user. Use --current-user to use the currently configured
                                git username.
 
-  --api-base-url=api-base-url  [default: https://api.github.com] The github api token. Defaults to env
-                               GITHUB_API_BASE_URL or 'https://api.github.com'
+  --api-base-url=api-base-url  The github api token. Defaults to configured GHE url or 'https://api.github.com'
 
-  --api-token=api-token        (required) The github api token. Defaults to env GITHUB_API_TOKEN.
+  --api-token=api-token        The github api token. Defaults to configured api token
 
   --extension=extension        Matches files with a certain extension after a dot.
 
@@ -90,7 +87,7 @@ EXAMPLE
   $ ghs code --extension js "import _ from 'lodash'"
 ```
 
-_See code: [src/commands/code.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.0.0/src/commands/code.ts)_
+_See code: [src/commands/code.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.1.0/src/commands/code.ts)_
 
 ## ghs commits [QUERY]
 
@@ -107,10 +104,10 @@ OPTIONS
   -s, --sort=(author-date|committer-date)  The sort field. Can be author-date or committer-date. Default: results are
                                            sorted by best match.
 
-  --api-base-url=api-base-url              [default: https://api.github.com] The github api token. Defaults to env
-                                           GITHUB_API_BASE_URL or 'https://api.github.com'
+  --api-base-url=api-base-url              The github api token. Defaults to configured GHE url or
+                                           'https://api.github.com'
 
-  --api-token=api-token                    (required) The github api token. Defaults to env GITHUB_API_TOKEN.
+  --api-token=api-token                    The github api token. Defaults to configured api token
 
   --author=author                          Matches commits authored by a user (based on email settings).
 
@@ -149,7 +146,27 @@ EXAMPLE
   $ ghs commit --repo octocat/Spoon-Knife css
 ```
 
-_See code: [src/commands/commits.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.0.0/src/commands/commits.ts)_
+_See code: [src/commands/commits.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.1.0/src/commands/commits.ts)_
+
+## ghs config
+
+Configure ghs settings
+
+```
+USAGE
+  $ ghs config
+
+OPTIONS
+  --base-url=base-url  sets the github base url for github enterprise instances (ex: https://github.company.com/api/v3).
+  --clear              clears the local config file including the auth token.
+  --token=token        sets the github token to use.
+
+EXAMPLE
+  $ ghs config --clear
+  config cleared
+```
+
+_See code: [src/commands/config.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.1.0/src/commands/config.ts)_
 
 ## ghs help [COMMAND]
 
@@ -166,7 +183,7 @@ OPTIONS
   --all  see all commands in CLI
 ```
 
-_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v1.2.1/src/commands/help.ts)_
+_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v1.2.2/src/commands/help.ts)_
 
 ## ghs issues [QUERY]
 
@@ -204,10 +221,10 @@ OPTIONS
   -u, --user=user                        Limits searches to a specific user. Use --current-user to use the currently
                                          configured git username.
 
-  --api-base-url=api-base-url            [default: https://api.github.com] The github api token. Defaults to env
-                                         GITHUB_API_BASE_URL or 'https://api.github.com'
+  --api-base-url=api-base-url            The github api token. Defaults to configured GHE url or
+                                         'https://api.github.com'
 
-  --api-token=api-token                  (required) The github api token. Defaults to env GITHUB_API_TOKEN.
+  --api-token=api-token                  The github api token. Defaults to configured api token
 
   --archived                             Filters issues or pull requests based on whether they are in an archived
                                          repository.
@@ -260,7 +277,7 @@ EXAMPLE
   $ ghs issues --is open --involves my-github-username
 ```
 
-_See code: [src/commands/issues.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.0.0/src/commands/issues.ts)_
+_See code: [src/commands/issues.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.1.0/src/commands/issues.ts)_
 
 ## ghs repositories [QUERY]
 
@@ -283,10 +300,9 @@ OPTIONS
   -u, --user=user                   Limits searches to a specific user. Use --current-user to filter on current github
                                     username
 
-  --api-base-url=api-base-url       [default: https://api.github.com] The github api token. Defaults to env
-                                    GITHUB_API_BASE_URL or 'https://api.github.com'
+  --api-base-url=api-base-url       The github api token. Defaults to configured GHE url or 'https://api.github.com'
 
-  --api-token=api-token             (required) The github api token. Defaults to env GITHUB_API_TOKEN.
+  --api-token=api-token             The github api token. Defaults to configured api token
 
   --archived                        Filters whether archived repositories should be included (--archived) or not
                                     (--no-archived).
@@ -315,5 +331,5 @@ EXAMPLE
      GoogleChrome/puppeteer (https://github.com/GoogleChrome/puppeteer)
 ```
 
-_See code: [src/commands/repositories.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.0.0/src/commands/repositories.ts)_
+_See code: [src/commands/repositories.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.1.0/src/commands/repositories.ts)_
 <!-- commandsstop -->

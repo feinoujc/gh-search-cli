@@ -1,17 +1,27 @@
 import {expect, test} from '@oclif/test'
 import * as sinon from 'sinon'
 
+import AuthFile from '../../src/auth-file'
 import _git from '../../src/git-user-name'
 import _opener from '../../src/opener'
 import _paginator from '../../src/pagination'
-import {apiArgs, random} from '../helpers/utils'
+import {random} from '../helpers/utils'
 
 describe('ghs commands', () => {
   const sandbox = sinon.sandbox.create()
   beforeEach(() => {
-     sandbox
+      if (!process.env.TEST_GITHUB_TOKEN) {
+        throw new Error('tests require TEST_GITHUB_TOKEN env var')
+      }
+      sandbox
         .stub(_paginator, 'next')
         .resolves(true)
+      sandbox
+        .stub(AuthFile.prototype, 'getConfig')
+        .resolves({
+          token: process.env.TEST_GITHUB_TOKEN || '',
+          baseUrl: 'https://api.github.com'
+        })
   })
 
   afterEach(() => {
@@ -20,12 +30,12 @@ describe('ghs commands', () => {
 
   describe('repositories', () => {
     const args = [
-      'repo',
-      ...apiArgs
+      'repo'
     ]
 
     test
       .stdout()
+      .stderr()
       .command([...args, 'oclif'])
       .it('runs repo oclif', ctx => {
         expect(ctx.stdout).to.contain('oclif')
@@ -120,8 +130,7 @@ describe('ghs commands', () => {
 
   describe('issues', () => {
    const args = [
-      'issues',
-      ...apiArgs
+      'issues'
     ]
 
    test
@@ -133,8 +142,7 @@ describe('ghs commands', () => {
   })
   describe('commits', () => {
     const args = [
-       'commits',
-       ...apiArgs
+       'commits'
      ]
 
     test
@@ -148,8 +156,7 @@ describe('ghs commands', () => {
 
   describe('code', () => {
     const args = [
-       'code',
-       ...apiArgs
+       'code'
      ]
 
     test
