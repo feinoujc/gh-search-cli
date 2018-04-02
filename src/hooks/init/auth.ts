@@ -72,7 +72,7 @@ async function prompt(config: IConfig): Promise<AuthConfig> {
 }
 
 const hook: Hook<'init'> = async function ({config, id}) {
-  const blacklist = ['config', 'help', '--help']
+  const blacklist = ['config', 'help', '--help', '--verson']
   if (blacklist.includes(id!)) return
 
   let token = ''
