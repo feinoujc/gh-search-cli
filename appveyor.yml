@@ -8,7 +8,7 @@ install:
   - ps: Install-Product node $env:nodejs_version x64
   - yarn add -D nyc@11 @oclif/nyc-config@1
 test_script:
-  - .\bin\run --version
+#  - .\bin\run --version
   - .\bin\run --help
   - .\node_modules\.bin\nyc --nycrc-path node_modules/@oclif/nyc-config/.nycrc yarn test
 after_test:
