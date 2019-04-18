@@ -162,7 +162,7 @@ describe('ghs commands', () => {
     test
        .stdout()
        .command([...args, '--repo', 'oclif/oclif', 'parser'])
-       .it('runs commits --repo oclif/oclif parser', ctx => {
+       .it('runs code --repo oclif/oclif parser', ctx => {
           expect(ctx.stdout).to.contain('oclif')
           expect(ctx.stdout).to.contain('https://github.com/oclif/oclif')
        })
@@ -170,10 +170,20 @@ describe('ghs commands', () => {
     test
        .stdout()
        .command([...args, '--repo', 'oclif/oclif', 'parser', '--text'])
-       .it('runs commits --repo oclif/oclif parser --text', ctx => {
+       .it('runs code --repo oclif/oclif parser --text', ctx => {
           expect(ctx.stdout).to.contain('oclif')
           expect(ctx.stdout).to.contain('https://github.com/oclif/oclif')
           expect(ctx.stdout).to.contain('parser')
        })
+
+    test
+      .stdout()
+      .command([...args, '--org', 'oclif', 'parser', '--text'])
+      .it('runs code --org oclif parser --text', ctx => {
+        expect(ctx.stdout).to.contain('oclif')
+        expect(ctx.stdout).to.contain('https://github.com/oclif/oclif')
+        expect(ctx.stdout).to.contain('parser')
+      })
    })
+ 
 })
