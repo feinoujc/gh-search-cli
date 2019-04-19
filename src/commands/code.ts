@@ -42,6 +42,10 @@ export default class Code extends Command {
       char: 'r',
       description: 'Limits searches to a specific repository.'
     }),
+    org: flags.string({
+      char: 'o',
+      description: 'Limits searchs to a specific organization'
+    }),
     text: flags.boolean({
       char: 't',
       description: 'Show full text match'
