@@ -95,14 +95,9 @@ export default class Repositories extends Command {
 
     return {
       rows,
-      options: {
-        columns: [
-        {
-          key: 'repo'
-        },
-        {
-          key: 'url'
-        }]
+      columns: {
+        repo: {},
+        url: {}
       }
     }
   }

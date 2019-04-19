@@ -15,7 +15,7 @@ describe('ghs commands', () => {
       }
       sandbox
         .stub(_paginator, 'next')
-        .resolves(true)
+        .resolves()
       sandbox
         .stub(AuthFile.prototype, 'getConfig')
         .resolves({
@@ -60,7 +60,7 @@ describe('ghs commands', () => {
     describe('opener flag', () => {
         let opener: any
         beforeEach(() => {
-          opener = sandbox.stub(_opener, 'open').callsFake(() => {})
+          opener = sandbox.stub(_opener, 'open').resolves()
         })
 
         test

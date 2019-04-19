@@ -16,7 +16,8 @@ export type FormatOptions = {
 
 export type TableResult = {
   rows: Array<any>
-  options: Partial<Table.TableOptions>
+  columns: Table.table.Columns<any>,
+  options?: Table.table.Options
 }
 
 export default abstract class BaseCommand extends Command {
@@ -120,8 +121,8 @@ export default abstract class BaseCommand extends Command {
       } else if (opts.json) {
         this.log(JSON.stringify(resp.items))
       } else {
-        const {rows, options} = this.format(resp, opts)
-        cli.table(rows, options)
+        const {rows, columns, options} = this.format(resp, opts)
+        cli.table(rows, columns, options)
       }
     }
 
@@ -130,11 +131,10 @@ export default abstract class BaseCommand extends Command {
       opts: FormatOptions
     ) => {
       if (!opts.json && results.links.next) {
-        if (await paginator.next()) {
-          const resp = await results.links.next()
-          print(resp, opts)
-          await next(resp, opts)
-        }
+        await paginator.next()
+        const resp = await results.links.next()
+        print(resp, opts)
+        await next(resp, opts)
       }
     }
 

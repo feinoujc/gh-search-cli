@@ -86,17 +86,10 @@ export default class Code extends Command {
 
     return {
       rows,
-      options: {
-        columns: [
-        {
-          key: 'repo'
-        },
-        {
-          key: 'message'
-        },
-        {
-          key: 'url'
-        }]
+      columns: {
+        repo: {},
+        message: {},
+        url: {}
       }
     }
   }

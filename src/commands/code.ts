@@ -71,24 +71,17 @@ export default class Code extends Command {
         shortenedPath = fullPath.replace(blobSegment, `${blobSegment.substring(0, 12)}/`)
       }
       const url = shortenedPath
-      acc.push({repo, url, text: opts.text ? item.text_matches.map((textMatch: any) => chalk.green(textMatch.fragment)) : undefined})
+      acc.push({repo, url, text: opts.text ? chalk.green(item.text_matches.map((textMatch: any) => textMatch.fragment).join('/n')) : undefined})
       return acc
     }, [])
 
     return {
       rows,
-      options: {
-        columns: [
-        ...(opts.text ? [{
-          key: 'text',
-          label: 'code'
-        }] : [{
-          key: 'repo'
-        }]),
-        {
-          key: 'url'
-        }]
-      }
+      columns: {
+        ...(opts.text ? {text: {header: 'code'}} : {repo: {}}),
+        url: {}
+      },
+      options: opts.text ? {'no-truncate': true} : undefined
     }
   }
 }

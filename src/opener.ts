@@ -1,5 +1,5 @@
-import opener = require('open')
+import {cli} from 'cli-ux'
 
 export default {
-  open: opener
+  open: (...args: Parameters<typeof cli.open>) => cli.open(...args)
 }
