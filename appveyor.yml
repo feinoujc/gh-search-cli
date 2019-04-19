@@ -1,9 +1,5 @@
 environment:
   nodejs_version: "10"
-cache:
-  - '%LOCALAPPDATA%\Yarn -> appveyor.yml'
-  - node_modules -> yarn.lock
-
 install:
   - ps: Install-Product node $env:nodejs_version x64
   - yarn add -D nyc@11 @oclif/nyc-config@1
