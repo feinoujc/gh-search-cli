@@ -28,7 +28,7 @@ $ npm install -g gh-search-cli
 $ ghs COMMAND
 running command...
 $ ghs (-v|--version|version)
-gh-search-cli/2.1.0 darwin-x64 node-v8.9.1
+gh-search-cli/2.3.0 darwin-x64 node-v10.15.2
 $ ghs --help [COMMAND]
 USAGE
   $ ghs COMMAND
@@ -37,14 +37,15 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [ghs code [QUERY]](#ghs-code-query)
-* [ghs commits [QUERY]](#ghs-commits-query)
-* [ghs config](#ghs-config)
-* [ghs help [COMMAND]](#ghs-help-command)
-* [ghs issues [QUERY]](#ghs-issues-query)
-* [ghs repositories [QUERY]](#ghs-repositories-query)
+* [`ghs code [QUERY]`](#ghs-code-query)
+* [`ghs commits [QUERY]`](#ghs-commits-query)
+* [`ghs config`](#ghs-config)
+* [`ghs help [COMMAND]`](#ghs-help-command)
+* [`ghs issues [QUERY]`](#ghs-issues-query)
+* [`ghs notifications`](#ghs-notifications)
+* [`ghs repositories [QUERY]`](#ghs-repositories-query)
 
-## ghs code [QUERY]
+## `ghs code [QUERY]`
 
 search github code. https://developer.github.com/v3/search/#search-code
 
@@ -56,6 +57,7 @@ OPTIONS
   -j, --json                   Return json. Can be piped to jq.
   -l, --language=language      Searches code based on the language it's written in.
   -o, --open                   Open the first result in your browser.
+  -o, --org=org                Limits searchs to a specific organization
   -r, --repo=repo              Limits searches to a specific repository.
 
   -s, --sort=(indexed)         The sort field. Can only be indexed, which indicates how recently a file has been indexed
@@ -87,9 +89,9 @@ EXAMPLE
   $ ghs code --extension js "import _ from 'lodash'"
 ```
 
-_See code: [src/commands/code.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.1.0/src/commands/code.ts)_
+_See code: [src/commands/code.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.3.0/src/commands/code.ts)_
 
-## ghs commits [QUERY]
+## `ghs commits [QUERY]`
 
 search github commits. https://developer.github.com/v3/search/#search-commits
 
@@ -129,7 +131,7 @@ OPTIONS
 
   --is=(public|private)                    Matches public or private repositories.
 
-  --merge                                  --merge filters to merge commits, --no-merge filters out merge commits.
+  --[no-]merge                             --merge filters to merge commits, --no-merge filters out merge commits.
 
   --order=(asc|desc)                       The sort order if sort parameter is provided. Default: desc
 
@@ -146,9 +148,9 @@ EXAMPLE
   $ ghs commit --repo octocat/Spoon-Knife css
 ```
 
-_See code: [src/commands/commits.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.1.0/src/commands/commits.ts)_
+_See code: [src/commands/commits.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.3.0/src/commands/commits.ts)_
 
-## ghs config
+## `ghs config`
 
 Configure ghs settings
 
@@ -166,9 +168,9 @@ EXAMPLE
   config cleared
 ```
 
-_See code: [src/commands/config.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.1.0/src/commands/config.ts)_
+_See code: [src/commands/config.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.3.0/src/commands/config.ts)_
 
-## ghs help [COMMAND]
+## `ghs help [COMMAND]`
 
 display help for ghs
 
@@ -183,9 +185,9 @@ OPTIONS
   --all  see all commands in CLI
 ```
 
-_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v1.2.2/src/commands/help.ts)_
+_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v1.2.11/src/commands/help.ts)_
 
-## ghs issues [QUERY]
+## `ghs issues [QUERY]`
 
 search github issues. https://developer.github.com/v3/search/#search-issues
 
@@ -226,7 +228,7 @@ OPTIONS
 
   --api-token=api-token                  The github api token. Defaults to configured api token
 
-  --archived                             Filters issues or pull requests based on whether they are in an archived
+  --[no-]archived                        Filters issues or pull requests based on whether they are in an archived
                                          repository.
 
   --assignee=assignee                    Finds issues or pull requeststhat are assigned to a certain user. Use
@@ -277,9 +279,42 @@ EXAMPLE
   $ ghs issues --is open --involves my-github-username
 ```
 
-_See code: [src/commands/issues.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.1.0/src/commands/issues.ts)_
+_See code: [src/commands/issues.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.3.0/src/commands/issues.ts)_
 
-## ghs repositories [QUERY]
+## `ghs notifications`
+
+List notifications
+
+```
+USAGE
+  $ ghs notifications
+
+OPTIONS
+  -a, --all                    If true, show notifications marked as read. Default: false
+
+  -b, --before=before          Only show notifications updated before the given time. This is a timestamp in ISO 8601
+                               format: YYYY-MM-DDTHH:MM:SSZ.
+
+  -j, --json                   Return json. Can be piped to jq.
+
+  -o, --owner=owner            Filter notifications to a owner, required with --repo flag
+
+  -p, --participating          If true, only shows notifications in which the user is directly participating or
+                               mentioned. Default: false
+
+  -r, --repo=repo              Filter notifications to a repository, required with --owner flag
+
+  -s, --since=since            Only show notifications updated after the given time. This is a timestamp in ISO 8601
+                               format: YYYY-MM-DDTHH:MM:SSZ
+
+  --api-base-url=api-base-url  The github api token. Defaults to configured GHE url or 'https://api.github.com'
+
+  --api-token=api-token        The github api token. Defaults to configured api token
+```
+
+_See code: [src/commands/notifications.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.3.0/src/commands/notifications.ts)_
+
+## `ghs repositories [QUERY]`
 
 search github repositories. https://developer.github.com/v3/search/#search-repositories
 
@@ -289,7 +324,7 @@ USAGE
 
 OPTIONS
   -c, --created=created             Filters repositories based on date of creation, or when they were last updated.
-  -f, --fork                        Filters whether forked repositories should be included (--fork) or not (--no-fork).
+  -f, --[no-]fork                   Filters whether forked repositories should be included (--fork) or not (--no-fork).
   -j, --json                        Return json. Can be piped to jq.
   -l, --language=language           Searches repositories based on the language they're written in.
   -o, --open                        Open the first result in your browser.
@@ -304,7 +339,7 @@ OPTIONS
 
   --api-token=api-token             The github api token. Defaults to configured api token
 
-  --archived                        Filters whether archived repositories should be included (--archived) or not
+  --[no-]archived                   Filters whether archived repositories should be included (--archived) or not
                                     (--no-archived).
 
   --forks=forks                     Filters repositories based on the number of forks.
@@ -331,5 +366,5 @@ EXAMPLE
      GoogleChrome/puppeteer (https://github.com/GoogleChrome/puppeteer)
 ```
 
-_See code: [src/commands/repositories.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.1.0/src/commands/repositories.ts)_
+_See code: [src/commands/repositories.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.3.0/src/commands/repositories.ts)_
 <!-- commandsstop -->

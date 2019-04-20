@@ -47,11 +47,10 @@ export default abstract class BaseCommand extends Command {
   }
 
   async catch(err: Error) {
-    if (err.name === 'StatusCodeError') {
-      const sce = err as StatusCodeError
+    if (err instanceof StatusCodeError) {
       const lines: Array<string> = []
-      lines.push(sce.error.message);
-      (sce.error.errors || []).forEach((_err: Error) =>
+      lines.push(err.error.message);
+      (err.error.errors || []).forEach((_err: Error) =>
         lines.push(_err.message)
       )
       this.warn(lines.join('\n'))

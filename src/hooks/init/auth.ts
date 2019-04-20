@@ -44,7 +44,7 @@ async function prompt(config: IConfig): Promise<AuthConfig> {
         },
         auth: {username, password},
         body: {
-          scopes: [],
+          scopes: ['notifications'],
           note: config.name,
           fingerprint
         }

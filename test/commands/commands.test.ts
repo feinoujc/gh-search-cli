@@ -185,4 +185,28 @@ describe('ghs commands', () => {
         expect(ctx.stdout).to.contain('parser')
       })
    })
+
+  describe('notifications', () => {
+    test
+      .stdout()
+      .command(['notifications'])
+      .it('fetches notifications', ctx => {
+        expect(ctx.stdout).to.contain('')
+      })
+
+    test
+      .stdout()
+      .command(['notifications', '--all'])
+      .it('fetches notifications --all', ctx => {
+        expect(ctx.stdout).to.contain('')
+      })
+
+    test
+      .stdout()
+      .command(['notifications', '--owner', 'feinoujc', '--repo', 'gh-search-cli'])
+      .it('fetches notifications --owner --repo', ctx => {
+        expect(ctx.stdout).to.contain('')
+      })
+  })
+
 })
