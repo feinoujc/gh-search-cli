@@ -16,7 +16,7 @@ Provides a cli for searching github.com. Supports repositories, code, issues and
 
 # Setup
 
-The cli requires a personal access token (no scope needed). The cli will create a new token on the first run and store it for future use. If you prefer you can use your own token and config the cli yourself (see [ghs config](#ghs-config))
+The cli requires a personal access token (`notifications` scope is needed for the notifications command). The cli will create a new token on the first run and store it for future use. If you prefer you can use your own token and config the cli yourself (see [ghs config](#ghs-config))
 
 _See code: [src/hooks/init/auth.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.1.0/src/hooks/init/auth.ts)_
 
