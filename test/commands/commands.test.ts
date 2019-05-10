@@ -15,7 +15,7 @@ describe('ghs commands', () => {
       }
       sandbox
         .stub(_paginator, 'next')
-        .resolves(true)
+        .resolves()
       sandbox
         .stub(AuthFile.prototype, 'getConfig')
         .resolves({
@@ -60,7 +60,7 @@ describe('ghs commands', () => {
     describe('opener flag', () => {
         let opener: any
         beforeEach(() => {
-          opener = sandbox.stub(_opener, 'open').callsFake(() => {})
+          opener = sandbox.stub(_opener, 'open').resolves()
         })
 
         test
@@ -185,4 +185,28 @@ describe('ghs commands', () => {
         expect(ctx.stdout).to.contain('parser')
       })
    })
+
+  describe('notifications', () => {
+    test
+      .stdout()
+      .command(['notifications'])
+      .it('fetches notifications', ctx => {
+        expect(ctx.stdout).to.contain('')
+      })
+
+    test
+      .stdout()
+      .command(['notifications', '--all'])
+      .it('fetches notifications --all', ctx => {
+        expect(ctx.stdout).to.contain('')
+      })
+
+    test
+      .stdout()
+      .command(['notifications', '--owner', 'feinoujc', '--repo', 'gh-search-cli'])
+      .it('fetches notifications --owner --repo', ctx => {
+        expect(ctx.stdout).to.contain('')
+      })
+  })
+
 })

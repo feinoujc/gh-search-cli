@@ -16,7 +16,8 @@ export type FormatOptions = {
 
 export type TableResult = {
   rows: Array<any>
-  options: Partial<Table.TableOptions>
+  columns: Table.table.Columns<any>,
+  options?: Table.table.Options
 }
 
 export default abstract class BaseCommand extends Command {
@@ -46,11 +47,10 @@ export default abstract class BaseCommand extends Command {
   }
 
   async catch(err: Error) {
-    if (err.name === 'StatusCodeError') {
-      const sce = err as StatusCodeError
+    if (err instanceof StatusCodeError) {
       const lines: Array<string> = []
-      lines.push(sce.error.message);
-      (sce.error.errors || []).forEach((_err: Error) =>
+      lines.push(err.error.message);
+      (err.error.errors || []).forEach((_err: Error) =>
         lines.push(_err.message)
       )
       this.warn(lines.join('\n'))
@@ -120,8 +120,8 @@ export default abstract class BaseCommand extends Command {
       } else if (opts.json) {
         this.log(JSON.stringify(resp.items))
       } else {
-        const {rows, options} = this.format(resp, opts)
-        cli.table(rows, options)
+        const {rows, columns, options} = this.format(resp, opts)
+        cli.table(rows, columns, options)
       }
     }
 
@@ -130,11 +130,10 @@ export default abstract class BaseCommand extends Command {
       opts: FormatOptions
     ) => {
       if (!opts.json && results.links.next) {
-        if (await paginator.next()) {
-          const resp = await results.links.next()
-          print(resp, opts)
-          await next(resp, opts)
-        }
+        await paginator.next()
+        const resp = await results.links.next()
+        print(resp, opts)
+        await next(resp, opts)
       }
     }
 

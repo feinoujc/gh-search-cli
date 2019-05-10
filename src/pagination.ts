@@ -1,5 +1,5 @@
 import cli from 'cli-ux'
 
 export default {
-  next: () => cli.confirm('continue?')
+  next: () => cli.anykey('Press key to continue...')
 }

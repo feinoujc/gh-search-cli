@@ -143,14 +143,9 @@ export default class Issues extends Command {
 
     return {
       rows,
-      options: {
-        columns: [
-        {
-          key: 'title'
-        },
-        {
-          key: 'url'
-        }]
+      columns: {
+        title: {},
+        url: {}
       }
     }
   }
