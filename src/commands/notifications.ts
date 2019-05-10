@@ -52,7 +52,8 @@ export default class Notifications extends Command {
     const rows = data.items.reduce((acc, item) => {
       const subject = chalk.cyan(item.subject.title)
       const url = item.subject.latest_comment_html_url
-      acc.push({subject, url})
+      const reason = item.reason
+      acc.push({subject, reason, url})
       return acc
     }, [])
 
@@ -60,6 +61,7 @@ export default class Notifications extends Command {
       rows,
       columns: {
         subject: {},
+        reason: {},
         url: {}
       }
     }

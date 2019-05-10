@@ -44,7 +44,7 @@ async function fetchAndAssignSubjectHtmlUrl(subject: any, opts: ApiOptions): Pro
         'User-Agent': opts.userAgent,
         Accept: baseOpts.headers.Accept
       },
-      url: subject.latest_comment_url
+      url: subject.latest_comment_url || subject.url
     })
     Object.assign(subject, {latest_comment_html_url: body.html_url})
   } catch (error) {
@@ -72,9 +72,10 @@ async function parseResponse(resp: any, opts: ApiOptions): Promise<ApiResponse> 
     })
     return parseResponse(res, opts)
   }
+
   const subjects = resp.body
     .map((notification: any) => notification.subject)
-    .filter((subject: any) => subject.latest_comment_url)
+    .filter((subject: any) => subject.latest_comment_url || subject.url)
 
   await Promise.all(subjects.map((subject: any) => fetchAndAssignSubjectHtmlUrl(subject, opts)))
 
