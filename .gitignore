@@ -1,6 +1,7 @@
 *-debug.log
 *-error.log
 .oclif.manifest.json
+package-lock.json
 /lib
 /node_modules
 /tmp
