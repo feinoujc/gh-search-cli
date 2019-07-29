@@ -30,7 +30,7 @@
     "@types/mocha": "^5.2.6",
     "@types/nock": "^9.1.2",
     "@types/node": "^9.4.6",
-    "@types/open": "0.0.29",
+    "@types/open": "6.2.1",
     "@types/parse-link-header": "^1.0.0",
     "@types/request-promise-native": "^1.0.14",
     "@types/sinon": "^4.3.0",
