@@ -28,7 +28,7 @@
     "@types/fs-extra": "^5.0.1",
     "@types/git-user-name": "^2.0.0",
     "@types/mocha": "^5.2.6",
-    "@types/nock": "^9.1.2",
+    "@types/nock": "^10.0.3",
     "@types/node": "^9.4.6",
     "@types/open": "6.2.1",
     "@types/parse-link-header": "^1.0.0",
