@@ -6,7 +6,7 @@ import AuthFile from '../../src/auth-file';
 import questions from '../../src/hooks/init/auth-questions';
 
 describe('hooks', () => {
-	const sandbox = sinon.sandbox.create();
+	const sandbox = sinon.createSandbox();
 	afterEach(() => {
 		sandbox.restore();
 		nock.cleanAll();

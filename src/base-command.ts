@@ -102,11 +102,11 @@ export default abstract class BaseCommand extends Command {
 
 		const type = `${this.id}`;
 
-		const print = (resp: ApiResponse, opts: FormatOptions) => {
+		const print = async (resp: ApiResponse, opts: FormatOptions) => {
 			if (!resp.items.length) {
 				this.warn('no results found');
 			} else if (opts.open) {
-				opener.open(resp.items[0].html_url);
+				await opener.open(resp.items[0].html_url);
 			} else if (opts.json) {
 				this.log(JSON.stringify(resp.items));
 			} else {
@@ -119,7 +119,7 @@ export default abstract class BaseCommand extends Command {
 			if (!opts.json && results.links.next) {
 				await paginator.next();
 				const resp = await results.links.next();
-				print(resp, opts);
+				await print(resp, opts);
 				await next(resp, opts);
 			}
 		};
@@ -140,7 +140,7 @@ export default abstract class BaseCommand extends Command {
 			userAgent: this.config.userAgent,
 			textMatch: text,
 		});
-		print(resp, opts);
+		await print(resp, opts);
 		return next(resp, opts);
 	}
 }

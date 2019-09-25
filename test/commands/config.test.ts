@@ -4,7 +4,7 @@ import * as sinon from 'sinon';
 import AuthFile from '../../src/auth-file';
 
 describe('config', () => {
-	const sandbox = sinon.sandbox.create();
+	const sandbox = sinon.createSandbox();
 	let clearStub: sinon.SinonStub;
 	beforeEach(() => {
 		clearStub = sandbox.stub(AuthFile.prototype, 'clear').resolves();
