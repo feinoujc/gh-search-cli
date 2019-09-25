@@ -10,16 +10,13 @@ import {random} from '../helpers/utils'
 describe('ghs commands', () => {
   const sandbox = sinon.sandbox.create()
   beforeEach(() => {
-      if (!process.env.TEST_GITHUB_TOKEN) {
-        throw new Error('tests require TEST_GITHUB_TOKEN env var')
-      }
       sandbox
         .stub(_paginator, 'next')
         .resolves()
       sandbox
         .stub(AuthFile.prototype, 'getConfig')
         .resolves({
-          token: process.env.TEST_GITHUB_TOKEN || '',
+          token: 'test_token',
           baseUrl: 'https://api.github.com'
         })
   })
@@ -34,6 +31,10 @@ describe('ghs commands', () => {
     ]
 
     test
+      .nock('https://api.github.com', api =>
+        api.get('/search/repositories')
+        .query({q: 'oclif'})
+        .reply(200, require('../__fixtures__/commands_repositories_runs_oclif')))
       .stdout()
       .stderr()
       .command([...args, 'oclif'])
@@ -42,6 +43,11 @@ describe('ghs commands', () => {
       })
 
     test
+      .nock('https://api.github.com', api =>
+          api.get('/search/repositories')
+          .query({q: 'gh-search-cli user:feinoujc'})
+          .reply(200, require('../__fixtures__/commands_repositories_runs_repo_user_feinoujc')))
+      .stdout()
       .stdout()
       .command([...args, '--user', 'feinoujc', 'gh-search-cli'])
       .it('runs repo --user feinoujc', ctx => {
@@ -49,6 +55,17 @@ describe('ghs commands', () => {
       })
 
     test
+      .nock('https://api.github.com', api =>
+          api.get('/search/repositories')
+          .query({q: 'user:oclif'})
+          .reply(200, require('../__fixtures__/commands_repositories_runs_repo_user_oclif_page1'), {
+            Link: '<https://api.github.com/search/repositories?q=user%3Aoclif&page=2>; rel="next", <https://api.github.com/search/repositories?q=user%3Aoclif&page=2>; rel="last"'
+          })
+        .get('/search/repositories')
+        .query({q: 'user:oclif', page: 2})
+        .reply(200, require('../__fixtures__/commands_repositories_runs_repo_user_oclif_page2'), {
+          Link: '<https://api.github.com/search/repositories?q=user%3Aoclif&page=1>; rel="prev", <https://api.github.com/search/repositories?q=user%3Aoclif&page=1>; rel="first"'
+        }))
       .stdout()
       .command([...args, '--user', 'oclif'])
       .it('runs repo --user oclif w/paging', ctx => {
@@ -64,6 +81,10 @@ describe('ghs commands', () => {
         })
 
         test
+          .nock('https://api.github.com', api =>
+              api.get('/search/repositories')
+              .query({q: 'gh-search-cli user:feinoujc'})
+              .reply(200, require('../__fixtures__/commands_repositories_runs_repo_user_feinoujc')))
           .stdout()
           .command([...args, '--user', 'feinoujc', '-o', 'gh-search-cli'])
           .it('opens first result', ctx => {
@@ -77,6 +98,10 @@ describe('ghs commands', () => {
 
     describe('json flag', () => {
         test
+        .nock('https://api.github.com', api =>
+            api.get('/search/repositories')
+            .query({q: 'gh-search-cli user:feinoujc'})
+            .reply(200, require('../__fixtures__/commands_repositories_runs_repo_user_feinoujc')))
           .stdout()
           .command([...args, '--user', 'feinoujc', '--json', 'gh-search-cli'])
           .it('writes json', ctx => {
@@ -86,9 +111,14 @@ describe('ghs commands', () => {
       })
 
     describe('errors', () => {
+        const rand = random()
         test
+        .nock('https://api.github.com', api =>
+            api.get('/search/repositories')
+            .query({q: `gh-search-cli user:${rand}`})
+            .reply(422, require('../__fixtures__/commands_repositories_errors_unknown_user')))
           .stderr()
-          .command([...args, '--user', random(), 'gh-search-cli'])
+          .command([...args, '--user', rand, 'gh-search-cli'])
           .it('writes out api errors', ctx => {
             expect(ctx.stderr).to.match(/resources do not exist/i)
           })
@@ -98,9 +128,9 @@ describe('ghs commands', () => {
           .command([
             'repositories',
             '--api-token',
-            random(),
+            rand,
             '--api-base-url',
-            `ftp://api.${random()}.com`,
+            `ftp://api.${rand}.com`,
             'gh-search-cli'
           ])
           .it('writes out http errors', ctx => {
@@ -120,6 +150,10 @@ describe('ghs commands', () => {
         })
 
         test
+          .nock('https://api.github.com', api =>
+              api.get('/search/repositories')
+              .query({q: 'user:feinoujc'})
+              .reply(200, require('../__fixtures__/commands_repositories_runs_repo_user_feinoujc')))
           .stdout()
           .command([...args, '--current-user'])
           .it('includes the current git user', ctx => {
@@ -134,10 +168,14 @@ describe('ghs commands', () => {
     ]
 
    test
+      .nock('https://api.github.com', api =>
+            api.get('/search/issues')
+            .query({q: 'ahejlsberg'})
+            .reply(200, require('../__fixtures__/commands_issues_runs_ahejlsberg')))
       .stdout()
-      .command([...args, 'feinoujc'])
-      .it('runs issues feinoujc', ctx => {
-        expect(ctx.stdout).to.contain('feinoujc')
+      .command([...args, 'ahejlsberg'])
+      .it('runs issues ahejlsberg', ctx => {
+        expect(ctx.stdout).to.contain('https://github.com/microsoft/TypeScript/issues')
       })
   })
   describe('commits', () => {
@@ -146,6 +184,10 @@ describe('ghs commands', () => {
      ]
 
     test
+        .nock('https://api.github.com', api =>
+            api.get('/search/commits')
+            .query({q: 'parser repo:oclif/oclif'})
+            .reply(200, require('../__fixtures__/commands_commits_runs_runs_oclif_repo_parser')))
        .stdout()
        .command([...args, '--repo', 'oclif/oclif', 'parser'])
        .it('runs commits --repo oclif/oclif parser', ctx => {
@@ -160,6 +202,10 @@ describe('ghs commands', () => {
      ]
 
     test
+      .nock('https://api.github.com', api =>
+        api.get('/search/code')
+        .query({q: 'parser repo:oclif/oclif'})
+        .reply(200, require('../__fixtures__/commands_code_runs_runs_oclif_repo_parser')))
        .stdout()
        .command([...args, '--repo', 'oclif/oclif', 'parser'])
        .it('runs code --repo oclif/oclif parser', ctx => {
@@ -168,6 +214,10 @@ describe('ghs commands', () => {
        })
 
     test
+      .nock('https://api.github.com', api =>
+          api.get('/search/code')
+          .query({q: 'parser repo:oclif/oclif'})
+          .reply(200, require('../__fixtures__/commands_code_runs_runs_oclif_repo_parser_full_text')))
        .stdout()
        .command([...args, '--repo', 'oclif/oclif', 'parser', '--text'])
        .it('runs code --repo oclif/oclif parser --text', ctx => {
@@ -177,6 +227,11 @@ describe('ghs commands', () => {
        })
 
     test
+      .nock('https://api.github.com', api =>
+        api.get('/search/code')
+        .query({q: 'parser org:oclif'})
+        .reply(200, require('../__fixtures__/commands_code_runs_runs_oclif_repo_parser_full_text'))
+      )
       .stdout()
       .command([...args, '--org', 'oclif', 'parser', '--text'])
       .it('runs code --org oclif parser --text', ctx => {
@@ -188,24 +243,51 @@ describe('ghs commands', () => {
 
   describe('notifications', () => {
     test
+    .nock('https://api.github.com', api =>
+        api.get('/notifications')
+        .query({all: 'false', participating: 'false'})
+        .reply(200, require('../__fixtures__/commands_notifications_default'))
+        .get('/repos/DefinitelyTyped/DefinitelyTyped/issues/comments/534729067')
+        .reply(200, require('../__fixtures__/commands_notifications_issue_comment'))
+        .get('/repos/typescript-eslint/typescript-eslint/releases/20186922')
+        .reply(200, require('../__fixtures__/commands_notifications_release'))
+      )
       .stdout()
       .command(['notifications'])
       .it('fetches notifications', ctx => {
-        expect(ctx.stdout).to.contain('')
+        expect(ctx.stdout).to.contain('typescript')
       })
 
     test
+    .nock('https://api.github.com', api =>
+        api.get('/notifications')
+        .query({all: 'true', participating: 'false'})
+        .reply(200, require('../__fixtures__/commands_notifications_default'))
+        .get('/repos/DefinitelyTyped/DefinitelyTyped/issues/comments/534729067')
+        .reply(200, require('../__fixtures__/commands_notifications_issue_comment'))
+        .get('/repos/typescript-eslint/typescript-eslint/releases/20186922')
+        .reply(200, require('../__fixtures__/commands_notifications_release'))
+      )
       .stdout()
       .command(['notifications', '--all'])
       .it('fetches notifications --all', ctx => {
-        expect(ctx.stdout).to.contain('')
+        expect(ctx.stdout).to.contain('typescript')
       })
 
     test
+    .nock('https://api.github.com', api =>
+        api.get('/repos/feinoujc/gh-search-cli/notifications')
+        .query({all: false, participating: false})
+        .reply(200, require('../__fixtures__/commands_notifications_default'))
+        .get('/repos/DefinitelyTyped/DefinitelyTyped/issues/comments/534729067')
+        .reply(200, require('../__fixtures__/commands_notifications_issue_comment'))
+        .get('/repos/typescript-eslint/typescript-eslint/releases/20186922')
+        .reply(200, require('../__fixtures__/commands_notifications_release'))
+      )
       .stdout()
       .command(['notifications', '--owner', 'feinoujc', '--repo', 'gh-search-cli'])
       .it('fetches notifications --owner --repo', ctx => {
-        expect(ctx.stdout).to.contain('')
+        expect(ctx.stdout).to.contain('typescript')
       })
   })
 

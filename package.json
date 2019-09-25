@@ -80,7 +80,7 @@
     "posttest": "npm run lint",
     "prepublishOnly": "npm run build && oclif-dev manifest",
     "preversion": "npm run clean",
-    "test": "mocha --forbid-only \"test/**/*.test.ts\"",
+    "test": "mocha \"test/**/*.test.ts\"",
     "version": "oclif-dev readme && git add README.md",
     "start": "npm run build && ./bin/run"
   },
