@@ -97,7 +97,7 @@ export default class Notifications extends Command {
 			baseUrl = 'https://api.github.com';
 		}
 
-		const print = (
+		const print = async (
 			resp: ApiResponse,
 			opts: { json?: boolean; open?: boolean },
 		) => {
@@ -111,7 +111,7 @@ export default class Notifications extends Command {
 						.map(({ subject }) => subject.latest_comment_html_url)
 						.find(Boolean);
 					if (firstLink) {
-						opener.open(firstLink);
+						await opener.open(firstLink);
 					}
 				}
 				const { rows, columns, options } = this.format(resp);
@@ -123,7 +123,7 @@ export default class Notifications extends Command {
 			if (!opts.json && results.links.next) {
 				await paginator.next();
 				const resp = await results.links.next();
-				print(resp, opts);
+				await print(resp, opts);
 				await next(resp, opts);
 			}
 		};
@@ -133,7 +133,7 @@ export default class Notifications extends Command {
 			apiToken: apiToken!,
 			userAgent: this.config.userAgent,
 		});
-		print(resp, flags);
+		await print(resp, flags);
 		return next(resp, flags);
 	}
 

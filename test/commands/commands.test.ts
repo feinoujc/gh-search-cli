@@ -8,7 +8,7 @@ import _paginator from '../../src/pagination';
 import { random } from '../helpers/utils';
 
 describe('ghs commands', () => {
-	const sandbox = sinon.sandbox.create();
+	const sandbox = sinon.createSandbox();
 	beforeEach(() => {
 		sandbox.stub(_paginator, 'next').resolves();
 		sandbox.stub(AuthFile.prototype, 'getConfig').resolves({
