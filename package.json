@@ -23,7 +23,7 @@
   "devDependencies": {
     "@oclif/dev-cli": "^1.22.0",
     "@oclif/test": "^1.2.4",
-    "@oclif/tslint": "^1.0.2",
+    "@oclif/tslint": "^3.1.1",
     "@types/chai": "^4.1.2",
     "@types/fs-extra": "^5.0.1",
     "@types/git-user-name": "^2.0.0",
