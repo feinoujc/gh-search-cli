@@ -148,12 +148,13 @@
   dependencies:
     fancy-test "^1.4.3"
 
-"@oclif/tslint@^1.0.2":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@oclif/tslint/-/tslint-1.1.2.tgz#23503ebb56c25556242e23e9df8706efc0b1fafb"
-  integrity sha512-1v1nK3e/qULhnaIIYzza9NR8wHTivEaUodIhpX441A/0b7IJGX8V6oMcY6apshGbXOIOtusTJtWTM1156mRmkw==
+"@oclif/tslint@^3.1.1":
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@oclif/tslint/-/tslint-3.1.1.tgz#e055cdf158630862fd44546f6b8fb1266c9778e7"
+  integrity sha512-B1ZWbgzwxDhNZLzVnn+JjyFf9u+J9wNwsz/ZX9YvA9edRYcdiJz9JikCttGPi35V0NU0TUV4UqTqo/q/wQ06jQ==
   dependencies:
-    tslint-xo "^0.8.0"
+    tslint-eslint-rules "^5.4.0"
+    tslint-xo "^0.9.0"
 
 "@sinonjs/commons@^1", "@sinonjs/commons@^1.3.0":
   version "1.6.0"
@@ -2398,7 +2399,7 @@ tslint-consistent-codestyle@^1.11.0:
     tslib "^1.7.1"
     tsutils "^2.29.0"
 
-tslint-eslint-rules@^5.3.1:
+tslint-eslint-rules@^5.3.1, tslint-eslint-rules@^5.4.0:
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/tslint-eslint-rules/-/tslint-eslint-rules-5.4.0.tgz#e488cc9181bf193fe5cd7bfca213a7695f1737b5"
   integrity sha512-WlSXE+J2vY/VPgIcqQuijMQiel+UtmXS+4nvK4ZzlDiqBfXse8FAvkNnTcYhnQyOTW5KFM+uRRGXxYhFpuBc6w==
@@ -2414,10 +2415,10 @@ tslint-microsoft-contrib@^5.0.2:
   dependencies:
     tsutils "^2.27.2 <2.29.0"
 
-tslint-xo@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/tslint-xo/-/tslint-xo-0.8.0.tgz#2a729485e5698159bcf2cd86339bbca6fc5a45dc"
-  integrity sha512-jJtpBwTXjDsVvcho+zcqjJpFjW8/zrJXXrNwnfcnbmNATIUmMOIgUsk3csbygkdtVeBgEKnXBtkIaMApWZtt+w==
+tslint-xo@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/tslint-xo/-/tslint-xo-0.9.0.tgz#e1faa505fecd5ac705460fc9f5ca417c3036c14f"
+  integrity sha512-Zk5jBdQVUaHEmR9TUoh1TJOjjCr7/nRplA+jDZBvucyBMx65pt0unTr6H/0HvrtSlucFvOMYsyBZE1W8b4AOig==
   dependencies:
     tslint-consistent-codestyle "^1.11.0"
     tslint-eslint-rules "^5.3.1"
