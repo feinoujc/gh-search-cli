@@ -38,9 +38,11 @@
     "globby": "^8.0.1",
     "mocha": "^6.2.0",
     "nock": "^10.0.6",
+    "prettier": "^1.18.2",
     "sinon": "^4.4.8",
     "ts-node": "^8.1.0",
     "tslint": "^5.9.1",
+    "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.4.4"
   },
   "engines": {
@@ -75,12 +77,14 @@
   "scripts": {
     "build": "rm -rf lib && tsc",
     "clean": "rm -f .oclif.manifest.json",
+    "prettier:check": "prettier --check **/*.{js,json,ts,yaml,yml}",
+    "prettier": "prettier --write **/*.{js,json,ts,yaml,yml}",
     "lint": "tsc -p test --noEmit && tslint -p test -t stylish",
     "postpublish": "npm run clean",
-    "posttest": "npm run lint",
+    "posttest": "npm run lint && npm run prettier:check",
     "prepublishOnly": "npm run build && oclif-dev manifest",
     "preversion": "npm run clean",
-    "test": "mocha \"test/**/*.test.ts\"",
+    "test": "mocha --forbid-only \"test/**/*.test.ts\"",
     "version": "oclif-dev readme && git add README.md",
     "start": "npm run build && ./bin/run"
   },

@@ -1,330 +1,312 @@
 {
-  "total_count": 3,
-  "incomplete_results": false,
-  "items": [
-    {
-      "name": "README.md",
-      "path": "README.md",
-      "sha": "e88a4edb6b1d90f651e4b831499851762fcb4ddb",
-      "url": "https://api.github.com/repositories/117152902/contents/README.md?ref=78d57df0afbaceebdc8a3156bf38c4352b0eb189",
-      "git_url": "https://api.github.com/repositories/117152902/git/blobs/e88a4edb6b1d90f651e4b831499851762fcb4ddb",
-      "html_url": "https://github.com/oclif/oclif/blob/78d57df0afbaceebdc8a3156bf38c4352b0eb189/README.md",
-      "repository": {
-        "id": 117152902,
-        "node_id": "MDEwOlJlcG9zaXRvcnkxMTcxNTI5MDI=",
-        "name": "oclif",
-        "full_name": "oclif/oclif",
-        "private": false,
-        "owner": {
-          "login": "oclif",
-          "id": 35349060,
-          "node_id": "MDEyOk9yZ2FuaXphdGlvbjM1MzQ5MDYw",
-          "avatar_url": "https://avatars3.githubusercontent.com/u/35349060?v=4",
-          "gravatar_id": "",
-          "url": "https://api.github.com/users/oclif",
-          "html_url": "https://github.com/oclif",
-          "followers_url": "https://api.github.com/users/oclif/followers",
-          "following_url": "https://api.github.com/users/oclif/following{/other_user}",
-          "gists_url": "https://api.github.com/users/oclif/gists{/gist_id}",
-          "starred_url": "https://api.github.com/users/oclif/starred{/owner}{/repo}",
-          "subscriptions_url": "https://api.github.com/users/oclif/subscriptions",
-          "organizations_url": "https://api.github.com/users/oclif/orgs",
-          "repos_url": "https://api.github.com/users/oclif/repos",
-          "events_url": "https://api.github.com/users/oclif/events{/privacy}",
-          "received_events_url": "https://api.github.com/users/oclif/received_events",
-          "type": "Organization",
-          "site_admin": false
-        },
-        "html_url": "https://github.com/oclif/oclif",
-        "description": "Node.js Open CLI Framework. Built with 💜 by Heroku.",
-        "fork": false,
-        "url": "https://api.github.com/repos/oclif/oclif",
-        "forks_url": "https://api.github.com/repos/oclif/oclif/forks",
-        "keys_url": "https://api.github.com/repos/oclif/oclif/keys{/key_id}",
-        "collaborators_url": "https://api.github.com/repos/oclif/oclif/collaborators{/collaborator}",
-        "teams_url": "https://api.github.com/repos/oclif/oclif/teams",
-        "hooks_url": "https://api.github.com/repos/oclif/oclif/hooks",
-        "issue_events_url": "https://api.github.com/repos/oclif/oclif/issues/events{/number}",
-        "events_url": "https://api.github.com/repos/oclif/oclif/events",
-        "assignees_url": "https://api.github.com/repos/oclif/oclif/assignees{/user}",
-        "branches_url": "https://api.github.com/repos/oclif/oclif/branches{/branch}",
-        "tags_url": "https://api.github.com/repos/oclif/oclif/tags",
-        "blobs_url": "https://api.github.com/repos/oclif/oclif/git/blobs{/sha}",
-        "git_tags_url": "https://api.github.com/repos/oclif/oclif/git/tags{/sha}",
-        "git_refs_url": "https://api.github.com/repos/oclif/oclif/git/refs{/sha}",
-        "trees_url": "https://api.github.com/repos/oclif/oclif/git/trees{/sha}",
-        "statuses_url": "https://api.github.com/repos/oclif/oclif/statuses/{sha}",
-        "languages_url": "https://api.github.com/repos/oclif/oclif/languages",
-        "stargazers_url": "https://api.github.com/repos/oclif/oclif/stargazers",
-        "contributors_url": "https://api.github.com/repos/oclif/oclif/contributors",
-        "subscribers_url": "https://api.github.com/repos/oclif/oclif/subscribers",
-        "subscription_url": "https://api.github.com/repos/oclif/oclif/subscription",
-        "commits_url": "https://api.github.com/repos/oclif/oclif/commits{/sha}",
-        "git_commits_url": "https://api.github.com/repos/oclif/oclif/git/commits{/sha}",
-        "comments_url": "https://api.github.com/repos/oclif/oclif/comments{/number}",
-        "issue_comment_url": "https://api.github.com/repos/oclif/oclif/issues/comments{/number}",
-        "contents_url": "https://api.github.com/repos/oclif/oclif/contents/{+path}",
-        "compare_url": "https://api.github.com/repos/oclif/oclif/compare/{base}...{head}",
-        "merges_url": "https://api.github.com/repos/oclif/oclif/merges",
-        "archive_url": "https://api.github.com/repos/oclif/oclif/{archive_format}{/ref}",
-        "downloads_url": "https://api.github.com/repos/oclif/oclif/downloads",
-        "issues_url": "https://api.github.com/repos/oclif/oclif/issues{/number}",
-        "pulls_url": "https://api.github.com/repos/oclif/oclif/pulls{/number}",
-        "milestones_url": "https://api.github.com/repos/oclif/oclif/milestones{/number}",
-        "notifications_url": "https://api.github.com/repos/oclif/oclif/notifications{?since,all,participating}",
-        "labels_url": "https://api.github.com/repos/oclif/oclif/labels{/name}",
-        "releases_url": "https://api.github.com/repos/oclif/oclif/releases{/id}",
-        "deployments_url": "https://api.github.com/repos/oclif/oclif/deployments"
-      },
-      "score": 4.8564177,
-      "text_matches": [
-        {
-          "object_url": "https://api.github.com/repositories/117152902/contents//README.md?ref=78d57df0afbaceebdc8a3156bf38c4352b0eb189",
-          "object_type": "FileContent",
-          "property": "content",
-          "fragment": " parser. We've built a custom one from years of experimentation that we feel consistently handles",
-          "matches": [
-            {
-              "text": "parser",
-              "indices": [
-                1,
-                7
-              ]
-            }
-          ]
-        },
-        {
-          "object_url": "https://api.github.com/repositories/117152902/contents//README.md?ref=78d57df0afbaceebdc8a3156bf38c4352b0eb189",
-          "object_type": "FileContent",
-          "property": "content",
-          "fragment": " replaced inside oclif if needed—including the arg/flag parser.\n* **Autocomplete** - Automatically",
-          "matches": [
-            {
-              "text": "parser",
-              "indices": [
-                56,
-                62
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "yarn.lock",
-      "path": "yarn.lock",
-      "sha": "e5d3e6d493c91ca37e43a756c54247bdc5d4474c",
-      "url": "https://api.github.com/repositories/117152902/contents/yarn.lock?ref=4f11822eea759f6c91c1cbef7fc19acbdc9f7df9",
-      "git_url": "https://api.github.com/repositories/117152902/git/blobs/e5d3e6d493c91ca37e43a756c54247bdc5d4474c",
-      "html_url": "https://github.com/oclif/oclif/blob/4f11822eea759f6c91c1cbef7fc19acbdc9f7df9/yarn.lock",
-      "repository": {
-        "id": 117152902,
-        "node_id": "MDEwOlJlcG9zaXRvcnkxMTcxNTI5MDI=",
-        "name": "oclif",
-        "full_name": "oclif/oclif",
-        "private": false,
-        "owner": {
-          "login": "oclif",
-          "id": 35349060,
-          "node_id": "MDEyOk9yZ2FuaXphdGlvbjM1MzQ5MDYw",
-          "avatar_url": "https://avatars3.githubusercontent.com/u/35349060?v=4",
-          "gravatar_id": "",
-          "url": "https://api.github.com/users/oclif",
-          "html_url": "https://github.com/oclif",
-          "followers_url": "https://api.github.com/users/oclif/followers",
-          "following_url": "https://api.github.com/users/oclif/following{/other_user}",
-          "gists_url": "https://api.github.com/users/oclif/gists{/gist_id}",
-          "starred_url": "https://api.github.com/users/oclif/starred{/owner}{/repo}",
-          "subscriptions_url": "https://api.github.com/users/oclif/subscriptions",
-          "organizations_url": "https://api.github.com/users/oclif/orgs",
-          "repos_url": "https://api.github.com/users/oclif/repos",
-          "events_url": "https://api.github.com/users/oclif/events{/privacy}",
-          "received_events_url": "https://api.github.com/users/oclif/received_events",
-          "type": "Organization",
-          "site_admin": false
-        },
-        "html_url": "https://github.com/oclif/oclif",
-        "description": "Node.js Open CLI Framework. Built with 💜 by Heroku.",
-        "fork": false,
-        "url": "https://api.github.com/repos/oclif/oclif",
-        "forks_url": "https://api.github.com/repos/oclif/oclif/forks",
-        "keys_url": "https://api.github.com/repos/oclif/oclif/keys{/key_id}",
-        "collaborators_url": "https://api.github.com/repos/oclif/oclif/collaborators{/collaborator}",
-        "teams_url": "https://api.github.com/repos/oclif/oclif/teams",
-        "hooks_url": "https://api.github.com/repos/oclif/oclif/hooks",
-        "issue_events_url": "https://api.github.com/repos/oclif/oclif/issues/events{/number}",
-        "events_url": "https://api.github.com/repos/oclif/oclif/events",
-        "assignees_url": "https://api.github.com/repos/oclif/oclif/assignees{/user}",
-        "branches_url": "https://api.github.com/repos/oclif/oclif/branches{/branch}",
-        "tags_url": "https://api.github.com/repos/oclif/oclif/tags",
-        "blobs_url": "https://api.github.com/repos/oclif/oclif/git/blobs{/sha}",
-        "git_tags_url": "https://api.github.com/repos/oclif/oclif/git/tags{/sha}",
-        "git_refs_url": "https://api.github.com/repos/oclif/oclif/git/refs{/sha}",
-        "trees_url": "https://api.github.com/repos/oclif/oclif/git/trees{/sha}",
-        "statuses_url": "https://api.github.com/repos/oclif/oclif/statuses/{sha}",
-        "languages_url": "https://api.github.com/repos/oclif/oclif/languages",
-        "stargazers_url": "https://api.github.com/repos/oclif/oclif/stargazers",
-        "contributors_url": "https://api.github.com/repos/oclif/oclif/contributors",
-        "subscribers_url": "https://api.github.com/repos/oclif/oclif/subscribers",
-        "subscription_url": "https://api.github.com/repos/oclif/oclif/subscription",
-        "commits_url": "https://api.github.com/repos/oclif/oclif/commits{/sha}",
-        "git_commits_url": "https://api.github.com/repos/oclif/oclif/git/commits{/sha}",
-        "comments_url": "https://api.github.com/repos/oclif/oclif/comments{/number}",
-        "issue_comment_url": "https://api.github.com/repos/oclif/oclif/issues/comments{/number}",
-        "contents_url": "https://api.github.com/repos/oclif/oclif/contents/{+path}",
-        "compare_url": "https://api.github.com/repos/oclif/oclif/compare/{base}...{head}",
-        "merges_url": "https://api.github.com/repos/oclif/oclif/merges",
-        "archive_url": "https://api.github.com/repos/oclif/oclif/{archive_format}{/ref}",
-        "downloads_url": "https://api.github.com/repos/oclif/oclif/downloads",
-        "issues_url": "https://api.github.com/repos/oclif/oclif/issues{/number}",
-        "pulls_url": "https://api.github.com/repos/oclif/oclif/pulls{/number}",
-        "milestones_url": "https://api.github.com/repos/oclif/oclif/milestones{/number}",
-        "notifications_url": "https://api.github.com/repos/oclif/oclif/notifications{?since,all,participating}",
-        "labels_url": "https://api.github.com/repos/oclif/oclif/labels{/name}",
-        "releases_url": "https://api.github.com/repos/oclif/oclif/releases{/id}",
-        "deployments_url": "https://api.github.com/repos/oclif/oclif/deployments"
-      },
-      "score": 2.9993384,
-      "text_matches": [
-        {
-          "object_url": "https://api.github.com/repositories/117152902/contents//yarn.lock?ref=4f11822eea759f6c91c1cbef7fc19acbdc9f7df9",
-          "object_type": "FileContent",
-          "property": "content",
-          "fragment": "/RP62Bg9BgmvLAdn1dJ8YuxxNrhFCv+DmTyukyCYGLle+eNQ==\n  dependencies:\n    \"@oclif/errors\" \"^1.2.2\"\n    \"@oclif/parser",
-          "matches": [
-            {
-              "text": "parser",
-              "indices": [
-                108,
-                114
-              ]
-            }
-          ]
-        },
-        {
-          "object_url": "https://api.github.com/repositories/117152902/contents//yarn.lock?ref=4f11822eea759f6c91c1cbef7fc19acbdc9f7df9",
-          "object_type": "FileContent",
-          "property": "content",
-          "fragment": "+MIGFPrWQO1KLMiQfoTpcLnUwloN4brrVUHw==\n\n\"@oclif/parser@^3.7.2\":\n  version \"3.7.2\"\n  resolved \"https://registry.yarnpkg",
-          "matches": [
-            {
-              "text": "parser",
-              "indices": [
-                48,
-                54
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "CHANGELOG.md",
-      "path": "CHANGELOG.md",
-      "sha": "32aca1866d6a970a328658dd287808c8e6e3e70c",
-      "url": "https://api.github.com/repositories/117152902/contents/CHANGELOG.md?ref=e841d827e825c7271fdf83222cfd544ff0f0c14e",
-      "git_url": "https://api.github.com/repositories/117152902/git/blobs/32aca1866d6a970a328658dd287808c8e6e3e70c",
-      "html_url": "https://github.com/oclif/oclif/blob/e841d827e825c7271fdf83222cfd544ff0f0c14e/CHANGELOG.md",
-      "repository": {
-        "id": 117152902,
-        "node_id": "MDEwOlJlcG9zaXRvcnkxMTcxNTI5MDI=",
-        "name": "oclif",
-        "full_name": "oclif/oclif",
-        "private": false,
-        "owner": {
-          "login": "oclif",
-          "id": 35349060,
-          "node_id": "MDEyOk9yZ2FuaXphdGlvbjM1MzQ5MDYw",
-          "avatar_url": "https://avatars3.githubusercontent.com/u/35349060?v=4",
-          "gravatar_id": "",
-          "url": "https://api.github.com/users/oclif",
-          "html_url": "https://github.com/oclif",
-          "followers_url": "https://api.github.com/users/oclif/followers",
-          "following_url": "https://api.github.com/users/oclif/following{/other_user}",
-          "gists_url": "https://api.github.com/users/oclif/gists{/gist_id}",
-          "starred_url": "https://api.github.com/users/oclif/starred{/owner}{/repo}",
-          "subscriptions_url": "https://api.github.com/users/oclif/subscriptions",
-          "organizations_url": "https://api.github.com/users/oclif/orgs",
-          "repos_url": "https://api.github.com/users/oclif/repos",
-          "events_url": "https://api.github.com/users/oclif/events{/privacy}",
-          "received_events_url": "https://api.github.com/users/oclif/received_events",
-          "type": "Organization",
-          "site_admin": false
-        },
-        "html_url": "https://github.com/oclif/oclif",
-        "description": "Node.js Open CLI Framework. Built with 💜 by Heroku.",
-        "fork": false,
-        "url": "https://api.github.com/repos/oclif/oclif",
-        "forks_url": "https://api.github.com/repos/oclif/oclif/forks",
-        "keys_url": "https://api.github.com/repos/oclif/oclif/keys{/key_id}",
-        "collaborators_url": "https://api.github.com/repos/oclif/oclif/collaborators{/collaborator}",
-        "teams_url": "https://api.github.com/repos/oclif/oclif/teams",
-        "hooks_url": "https://api.github.com/repos/oclif/oclif/hooks",
-        "issue_events_url": "https://api.github.com/repos/oclif/oclif/issues/events{/number}",
-        "events_url": "https://api.github.com/repos/oclif/oclif/events",
-        "assignees_url": "https://api.github.com/repos/oclif/oclif/assignees{/user}",
-        "branches_url": "https://api.github.com/repos/oclif/oclif/branches{/branch}",
-        "tags_url": "https://api.github.com/repos/oclif/oclif/tags",
-        "blobs_url": "https://api.github.com/repos/oclif/oclif/git/blobs{/sha}",
-        "git_tags_url": "https://api.github.com/repos/oclif/oclif/git/tags{/sha}",
-        "git_refs_url": "https://api.github.com/repos/oclif/oclif/git/refs{/sha}",
-        "trees_url": "https://api.github.com/repos/oclif/oclif/git/trees{/sha}",
-        "statuses_url": "https://api.github.com/repos/oclif/oclif/statuses/{sha}",
-        "languages_url": "https://api.github.com/repos/oclif/oclif/languages",
-        "stargazers_url": "https://api.github.com/repos/oclif/oclif/stargazers",
-        "contributors_url": "https://api.github.com/repos/oclif/oclif/contributors",
-        "subscribers_url": "https://api.github.com/repos/oclif/oclif/subscribers",
-        "subscription_url": "https://api.github.com/repos/oclif/oclif/subscription",
-        "commits_url": "https://api.github.com/repos/oclif/oclif/commits{/sha}",
-        "git_commits_url": "https://api.github.com/repos/oclif/oclif/git/commits{/sha}",
-        "comments_url": "https://api.github.com/repos/oclif/oclif/comments{/number}",
-        "issue_comment_url": "https://api.github.com/repos/oclif/oclif/issues/comments{/number}",
-        "contents_url": "https://api.github.com/repos/oclif/oclif/contents/{+path}",
-        "compare_url": "https://api.github.com/repos/oclif/oclif/compare/{base}...{head}",
-        "merges_url": "https://api.github.com/repos/oclif/oclif/merges",
-        "archive_url": "https://api.github.com/repos/oclif/oclif/{archive_format}{/ref}",
-        "downloads_url": "https://api.github.com/repos/oclif/oclif/downloads",
-        "issues_url": "https://api.github.com/repos/oclif/oclif/issues{/number}",
-        "pulls_url": "https://api.github.com/repos/oclif/oclif/pulls{/number}",
-        "milestones_url": "https://api.github.com/repos/oclif/oclif/milestones{/number}",
-        "notifications_url": "https://api.github.com/repos/oclif/oclif/notifications{?since,all,participating}",
-        "labels_url": "https://api.github.com/repos/oclif/oclif/labels{/name}",
-        "releases_url": "https://api.github.com/repos/oclif/oclif/releases{/id}",
-        "deployments_url": "https://api.github.com/repos/oclif/oclif/deployments"
-      },
-      "score": 2.21762,
-      "text_matches": [
-        {
-          "object_url": "https://api.github.com/repositories/117152902/contents//CHANGELOG.md?ref=e841d827e825c7271fdf83222cfd544ff0f0c14e",
-          "object_type": "FileContent",
-          "property": "content",
-          "fragment": " scripts ([fc9bba9](https://github.com/oclif/cli/commit/fc9bba9))\n* parser is now exported from command",
-          "matches": [
-            {
-              "text": "parser",
-              "indices": [
-                68,
-                74
-              ]
-            }
-          ]
-        },
-        {
-          "object_url": "https://api.github.com/repositories/117152902/contents//CHANGELOG.md?ref=e841d827e825c7271fdf83222cfd544ff0f0c14e",
-          "object_type": "FileContent",
-          "property": "content",
-          "fragment": " parser model ([7e7f7d3](https://github.com/oclif/cli/commit/7e7f7d3))\n\n<a name=\"0.33.23\"></a>\n## [0.33",
-          "matches": [
-            {
-              "text": "parser",
-              "indices": [
-                1,
-                7
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ]
+	"total_count": 3,
+	"incomplete_results": false,
+	"items": [
+		{
+			"name": "README.md",
+			"path": "README.md",
+			"sha": "e88a4edb6b1d90f651e4b831499851762fcb4ddb",
+			"url": "https://api.github.com/repositories/117152902/contents/README.md?ref=78d57df0afbaceebdc8a3156bf38c4352b0eb189",
+			"git_url": "https://api.github.com/repositories/117152902/git/blobs/e88a4edb6b1d90f651e4b831499851762fcb4ddb",
+			"html_url": "https://github.com/oclif/oclif/blob/78d57df0afbaceebdc8a3156bf38c4352b0eb189/README.md",
+			"repository": {
+				"id": 117152902,
+				"node_id": "MDEwOlJlcG9zaXRvcnkxMTcxNTI5MDI=",
+				"name": "oclif",
+				"full_name": "oclif/oclif",
+				"private": false,
+				"owner": {
+					"login": "oclif",
+					"id": 35349060,
+					"node_id": "MDEyOk9yZ2FuaXphdGlvbjM1MzQ5MDYw",
+					"avatar_url": "https://avatars3.githubusercontent.com/u/35349060?v=4",
+					"gravatar_id": "",
+					"url": "https://api.github.com/users/oclif",
+					"html_url": "https://github.com/oclif",
+					"followers_url": "https://api.github.com/users/oclif/followers",
+					"following_url": "https://api.github.com/users/oclif/following{/other_user}",
+					"gists_url": "https://api.github.com/users/oclif/gists{/gist_id}",
+					"starred_url": "https://api.github.com/users/oclif/starred{/owner}{/repo}",
+					"subscriptions_url": "https://api.github.com/users/oclif/subscriptions",
+					"organizations_url": "https://api.github.com/users/oclif/orgs",
+					"repos_url": "https://api.github.com/users/oclif/repos",
+					"events_url": "https://api.github.com/users/oclif/events{/privacy}",
+					"received_events_url": "https://api.github.com/users/oclif/received_events",
+					"type": "Organization",
+					"site_admin": false
+				},
+				"html_url": "https://github.com/oclif/oclif",
+				"description": "Node.js Open CLI Framework. Built with 💜 by Heroku.",
+				"fork": false,
+				"url": "https://api.github.com/repos/oclif/oclif",
+				"forks_url": "https://api.github.com/repos/oclif/oclif/forks",
+				"keys_url": "https://api.github.com/repos/oclif/oclif/keys{/key_id}",
+				"collaborators_url": "https://api.github.com/repos/oclif/oclif/collaborators{/collaborator}",
+				"teams_url": "https://api.github.com/repos/oclif/oclif/teams",
+				"hooks_url": "https://api.github.com/repos/oclif/oclif/hooks",
+				"issue_events_url": "https://api.github.com/repos/oclif/oclif/issues/events{/number}",
+				"events_url": "https://api.github.com/repos/oclif/oclif/events",
+				"assignees_url": "https://api.github.com/repos/oclif/oclif/assignees{/user}",
+				"branches_url": "https://api.github.com/repos/oclif/oclif/branches{/branch}",
+				"tags_url": "https://api.github.com/repos/oclif/oclif/tags",
+				"blobs_url": "https://api.github.com/repos/oclif/oclif/git/blobs{/sha}",
+				"git_tags_url": "https://api.github.com/repos/oclif/oclif/git/tags{/sha}",
+				"git_refs_url": "https://api.github.com/repos/oclif/oclif/git/refs{/sha}",
+				"trees_url": "https://api.github.com/repos/oclif/oclif/git/trees{/sha}",
+				"statuses_url": "https://api.github.com/repos/oclif/oclif/statuses/{sha}",
+				"languages_url": "https://api.github.com/repos/oclif/oclif/languages",
+				"stargazers_url": "https://api.github.com/repos/oclif/oclif/stargazers",
+				"contributors_url": "https://api.github.com/repos/oclif/oclif/contributors",
+				"subscribers_url": "https://api.github.com/repos/oclif/oclif/subscribers",
+				"subscription_url": "https://api.github.com/repos/oclif/oclif/subscription",
+				"commits_url": "https://api.github.com/repos/oclif/oclif/commits{/sha}",
+				"git_commits_url": "https://api.github.com/repos/oclif/oclif/git/commits{/sha}",
+				"comments_url": "https://api.github.com/repos/oclif/oclif/comments{/number}",
+				"issue_comment_url": "https://api.github.com/repos/oclif/oclif/issues/comments{/number}",
+				"contents_url": "https://api.github.com/repos/oclif/oclif/contents/{+path}",
+				"compare_url": "https://api.github.com/repos/oclif/oclif/compare/{base}...{head}",
+				"merges_url": "https://api.github.com/repos/oclif/oclif/merges",
+				"archive_url": "https://api.github.com/repos/oclif/oclif/{archive_format}{/ref}",
+				"downloads_url": "https://api.github.com/repos/oclif/oclif/downloads",
+				"issues_url": "https://api.github.com/repos/oclif/oclif/issues{/number}",
+				"pulls_url": "https://api.github.com/repos/oclif/oclif/pulls{/number}",
+				"milestones_url": "https://api.github.com/repos/oclif/oclif/milestones{/number}",
+				"notifications_url": "https://api.github.com/repos/oclif/oclif/notifications{?since,all,participating}",
+				"labels_url": "https://api.github.com/repos/oclif/oclif/labels{/name}",
+				"releases_url": "https://api.github.com/repos/oclif/oclif/releases{/id}",
+				"deployments_url": "https://api.github.com/repos/oclif/oclif/deployments"
+			},
+			"score": 4.8564177,
+			"text_matches": [
+				{
+					"object_url": "https://api.github.com/repositories/117152902/contents//README.md?ref=78d57df0afbaceebdc8a3156bf38c4352b0eb189",
+					"object_type": "FileContent",
+					"property": "content",
+					"fragment": " parser. We've built a custom one from years of experimentation that we feel consistently handles",
+					"matches": [
+						{
+							"text": "parser",
+							"indices": [1, 7]
+						}
+					]
+				},
+				{
+					"object_url": "https://api.github.com/repositories/117152902/contents//README.md?ref=78d57df0afbaceebdc8a3156bf38c4352b0eb189",
+					"object_type": "FileContent",
+					"property": "content",
+					"fragment": " replaced inside oclif if needed—including the arg/flag parser.\n* **Autocomplete** - Automatically",
+					"matches": [
+						{
+							"text": "parser",
+							"indices": [56, 62]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "yarn.lock",
+			"path": "yarn.lock",
+			"sha": "e5d3e6d493c91ca37e43a756c54247bdc5d4474c",
+			"url": "https://api.github.com/repositories/117152902/contents/yarn.lock?ref=4f11822eea759f6c91c1cbef7fc19acbdc9f7df9",
+			"git_url": "https://api.github.com/repositories/117152902/git/blobs/e5d3e6d493c91ca37e43a756c54247bdc5d4474c",
+			"html_url": "https://github.com/oclif/oclif/blob/4f11822eea759f6c91c1cbef7fc19acbdc9f7df9/yarn.lock",
+			"repository": {
+				"id": 117152902,
+				"node_id": "MDEwOlJlcG9zaXRvcnkxMTcxNTI5MDI=",
+				"name": "oclif",
+				"full_name": "oclif/oclif",
+				"private": false,
+				"owner": {
+					"login": "oclif",
+					"id": 35349060,
+					"node_id": "MDEyOk9yZ2FuaXphdGlvbjM1MzQ5MDYw",
+					"avatar_url": "https://avatars3.githubusercontent.com/u/35349060?v=4",
+					"gravatar_id": "",
+					"url": "https://api.github.com/users/oclif",
+					"html_url": "https://github.com/oclif",
+					"followers_url": "https://api.github.com/users/oclif/followers",
+					"following_url": "https://api.github.com/users/oclif/following{/other_user}",
+					"gists_url": "https://api.github.com/users/oclif/gists{/gist_id}",
+					"starred_url": "https://api.github.com/users/oclif/starred{/owner}{/repo}",
+					"subscriptions_url": "https://api.github.com/users/oclif/subscriptions",
+					"organizations_url": "https://api.github.com/users/oclif/orgs",
+					"repos_url": "https://api.github.com/users/oclif/repos",
+					"events_url": "https://api.github.com/users/oclif/events{/privacy}",
+					"received_events_url": "https://api.github.com/users/oclif/received_events",
+					"type": "Organization",
+					"site_admin": false
+				},
+				"html_url": "https://github.com/oclif/oclif",
+				"description": "Node.js Open CLI Framework. Built with 💜 by Heroku.",
+				"fork": false,
+				"url": "https://api.github.com/repos/oclif/oclif",
+				"forks_url": "https://api.github.com/repos/oclif/oclif/forks",
+				"keys_url": "https://api.github.com/repos/oclif/oclif/keys{/key_id}",
+				"collaborators_url": "https://api.github.com/repos/oclif/oclif/collaborators{/collaborator}",
+				"teams_url": "https://api.github.com/repos/oclif/oclif/teams",
+				"hooks_url": "https://api.github.com/repos/oclif/oclif/hooks",
+				"issue_events_url": "https://api.github.com/repos/oclif/oclif/issues/events{/number}",
+				"events_url": "https://api.github.com/repos/oclif/oclif/events",
+				"assignees_url": "https://api.github.com/repos/oclif/oclif/assignees{/user}",
+				"branches_url": "https://api.github.com/repos/oclif/oclif/branches{/branch}",
+				"tags_url": "https://api.github.com/repos/oclif/oclif/tags",
+				"blobs_url": "https://api.github.com/repos/oclif/oclif/git/blobs{/sha}",
+				"git_tags_url": "https://api.github.com/repos/oclif/oclif/git/tags{/sha}",
+				"git_refs_url": "https://api.github.com/repos/oclif/oclif/git/refs{/sha}",
+				"trees_url": "https://api.github.com/repos/oclif/oclif/git/trees{/sha}",
+				"statuses_url": "https://api.github.com/repos/oclif/oclif/statuses/{sha}",
+				"languages_url": "https://api.github.com/repos/oclif/oclif/languages",
+				"stargazers_url": "https://api.github.com/repos/oclif/oclif/stargazers",
+				"contributors_url": "https://api.github.com/repos/oclif/oclif/contributors",
+				"subscribers_url": "https://api.github.com/repos/oclif/oclif/subscribers",
+				"subscription_url": "https://api.github.com/repos/oclif/oclif/subscription",
+				"commits_url": "https://api.github.com/repos/oclif/oclif/commits{/sha}",
+				"git_commits_url": "https://api.github.com/repos/oclif/oclif/git/commits{/sha}",
+				"comments_url": "https://api.github.com/repos/oclif/oclif/comments{/number}",
+				"issue_comment_url": "https://api.github.com/repos/oclif/oclif/issues/comments{/number}",
+				"contents_url": "https://api.github.com/repos/oclif/oclif/contents/{+path}",
+				"compare_url": "https://api.github.com/repos/oclif/oclif/compare/{base}...{head}",
+				"merges_url": "https://api.github.com/repos/oclif/oclif/merges",
+				"archive_url": "https://api.github.com/repos/oclif/oclif/{archive_format}{/ref}",
+				"downloads_url": "https://api.github.com/repos/oclif/oclif/downloads",
+				"issues_url": "https://api.github.com/repos/oclif/oclif/issues{/number}",
+				"pulls_url": "https://api.github.com/repos/oclif/oclif/pulls{/number}",
+				"milestones_url": "https://api.github.com/repos/oclif/oclif/milestones{/number}",
+				"notifications_url": "https://api.github.com/repos/oclif/oclif/notifications{?since,all,participating}",
+				"labels_url": "https://api.github.com/repos/oclif/oclif/labels{/name}",
+				"releases_url": "https://api.github.com/repos/oclif/oclif/releases{/id}",
+				"deployments_url": "https://api.github.com/repos/oclif/oclif/deployments"
+			},
+			"score": 2.9993384,
+			"text_matches": [
+				{
+					"object_url": "https://api.github.com/repositories/117152902/contents//yarn.lock?ref=4f11822eea759f6c91c1cbef7fc19acbdc9f7df9",
+					"object_type": "FileContent",
+					"property": "content",
+					"fragment": "/RP62Bg9BgmvLAdn1dJ8YuxxNrhFCv+DmTyukyCYGLle+eNQ==\n  dependencies:\n    \"@oclif/errors\" \"^1.2.2\"\n    \"@oclif/parser",
+					"matches": [
+						{
+							"text": "parser",
+							"indices": [108, 114]
+						}
+					]
+				},
+				{
+					"object_url": "https://api.github.com/repositories/117152902/contents//yarn.lock?ref=4f11822eea759f6c91c1cbef7fc19acbdc9f7df9",
+					"object_type": "FileContent",
+					"property": "content",
+					"fragment": "+MIGFPrWQO1KLMiQfoTpcLnUwloN4brrVUHw==\n\n\"@oclif/parser@^3.7.2\":\n  version \"3.7.2\"\n  resolved \"https://registry.yarnpkg",
+					"matches": [
+						{
+							"text": "parser",
+							"indices": [48, 54]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "CHANGELOG.md",
+			"path": "CHANGELOG.md",
+			"sha": "32aca1866d6a970a328658dd287808c8e6e3e70c",
+			"url": "https://api.github.com/repositories/117152902/contents/CHANGELOG.md?ref=e841d827e825c7271fdf83222cfd544ff0f0c14e",
+			"git_url": "https://api.github.com/repositories/117152902/git/blobs/32aca1866d6a970a328658dd287808c8e6e3e70c",
+			"html_url": "https://github.com/oclif/oclif/blob/e841d827e825c7271fdf83222cfd544ff0f0c14e/CHANGELOG.md",
+			"repository": {
+				"id": 117152902,
+				"node_id": "MDEwOlJlcG9zaXRvcnkxMTcxNTI5MDI=",
+				"name": "oclif",
+				"full_name": "oclif/oclif",
+				"private": false,
+				"owner": {
+					"login": "oclif",
+					"id": 35349060,
+					"node_id": "MDEyOk9yZ2FuaXphdGlvbjM1MzQ5MDYw",
+					"avatar_url": "https://avatars3.githubusercontent.com/u/35349060?v=4",
+					"gravatar_id": "",
+					"url": "https://api.github.com/users/oclif",
+					"html_url": "https://github.com/oclif",
+					"followers_url": "https://api.github.com/users/oclif/followers",
+					"following_url": "https://api.github.com/users/oclif/following{/other_user}",
+					"gists_url": "https://api.github.com/users/oclif/gists{/gist_id}",
+					"starred_url": "https://api.github.com/users/oclif/starred{/owner}{/repo}",
+					"subscriptions_url": "https://api.github.com/users/oclif/subscriptions",
+					"organizations_url": "https://api.github.com/users/oclif/orgs",
+					"repos_url": "https://api.github.com/users/oclif/repos",
+					"events_url": "https://api.github.com/users/oclif/events{/privacy}",
+					"received_events_url": "https://api.github.com/users/oclif/received_events",
+					"type": "Organization",
+					"site_admin": false
+				},
+				"html_url": "https://github.com/oclif/oclif",
+				"description": "Node.js Open CLI Framework. Built with 💜 by Heroku.",
+				"fork": false,
+				"url": "https://api.github.com/repos/oclif/oclif",
+				"forks_url": "https://api.github.com/repos/oclif/oclif/forks",
+				"keys_url": "https://api.github.com/repos/oclif/oclif/keys{/key_id}",
+				"collaborators_url": "https://api.github.com/repos/oclif/oclif/collaborators{/collaborator}",
+				"teams_url": "https://api.github.com/repos/oclif/oclif/teams",
+				"hooks_url": "https://api.github.com/repos/oclif/oclif/hooks",
+				"issue_events_url": "https://api.github.com/repos/oclif/oclif/issues/events{/number}",
+				"events_url": "https://api.github.com/repos/oclif/oclif/events",
+				"assignees_url": "https://api.github.com/repos/oclif/oclif/assignees{/user}",
+				"branches_url": "https://api.github.com/repos/oclif/oclif/branches{/branch}",
+				"tags_url": "https://api.github.com/repos/oclif/oclif/tags",
+				"blobs_url": "https://api.github.com/repos/oclif/oclif/git/blobs{/sha}",
+				"git_tags_url": "https://api.github.com/repos/oclif/oclif/git/tags{/sha}",
+				"git_refs_url": "https://api.github.com/repos/oclif/oclif/git/refs{/sha}",
+				"trees_url": "https://api.github.com/repos/oclif/oclif/git/trees{/sha}",
+				"statuses_url": "https://api.github.com/repos/oclif/oclif/statuses/{sha}",
+				"languages_url": "https://api.github.com/repos/oclif/oclif/languages",
+				"stargazers_url": "https://api.github.com/repos/oclif/oclif/stargazers",
+				"contributors_url": "https://api.github.com/repos/oclif/oclif/contributors",
+				"subscribers_url": "https://api.github.com/repos/oclif/oclif/subscribers",
+				"subscription_url": "https://api.github.com/repos/oclif/oclif/subscription",
+				"commits_url": "https://api.github.com/repos/oclif/oclif/commits{/sha}",
+				"git_commits_url": "https://api.github.com/repos/oclif/oclif/git/commits{/sha}",
+				"comments_url": "https://api.github.com/repos/oclif/oclif/comments{/number}",
+				"issue_comment_url": "https://api.github.com/repos/oclif/oclif/issues/comments{/number}",
+				"contents_url": "https://api.github.com/repos/oclif/oclif/contents/{+path}",
+				"compare_url": "https://api.github.com/repos/oclif/oclif/compare/{base}...{head}",
+				"merges_url": "https://api.github.com/repos/oclif/oclif/merges",
+				"archive_url": "https://api.github.com/repos/oclif/oclif/{archive_format}{/ref}",
+				"downloads_url": "https://api.github.com/repos/oclif/oclif/downloads",
+				"issues_url": "https://api.github.com/repos/oclif/oclif/issues{/number}",
+				"pulls_url": "https://api.github.com/repos/oclif/oclif/pulls{/number}",
+				"milestones_url": "https://api.github.com/repos/oclif/oclif/milestones{/number}",
+				"notifications_url": "https://api.github.com/repos/oclif/oclif/notifications{?since,all,participating}",
+				"labels_url": "https://api.github.com/repos/oclif/oclif/labels{/name}",
+				"releases_url": "https://api.github.com/repos/oclif/oclif/releases{/id}",
+				"deployments_url": "https://api.github.com/repos/oclif/oclif/deployments"
+			},
+			"score": 2.21762,
+			"text_matches": [
+				{
+					"object_url": "https://api.github.com/repositories/117152902/contents//CHANGELOG.md?ref=e841d827e825c7271fdf83222cfd544ff0f0c14e",
+					"object_type": "FileContent",
+					"property": "content",
+					"fragment": " scripts ([fc9bba9](https://github.com/oclif/cli/commit/fc9bba9))\n* parser is now exported from command",
+					"matches": [
+						{
+							"text": "parser",
+							"indices": [68, 74]
+						}
+					]
+				},
+				{
+					"object_url": "https://api.github.com/repositories/117152902/contents//CHANGELOG.md?ref=e841d827e825c7271fdf83222cfd544ff0f0c14e",
+					"object_type": "FileContent",
+					"property": "content",
+					"fragment": " parser model ([7e7f7d3](https://github.com/oclif/cli/commit/7e7f7d3))\n\n<a name=\"0.33.23\"></a>\n## [0.33",
+					"matches": [
+						{
+							"text": "parser",
+							"indices": [1, 7]
+						}
+					]
+				}
+			]
+		}
+	]
 }
