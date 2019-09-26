@@ -1,4 +1,5 @@
 import Command, { flags } from '@oclif/command';
+import { flags as parserFlags } from '@oclif/parser';
 import cli, { Table } from 'cli-ux';
 import { StatusCodeError } from 'request-promise-native/errors';
 
@@ -19,6 +20,43 @@ export type TableResult = {
 	columns: Table.table.Columns<any>;
 	options?: Table.table.Options;
 };
+
+type IOptionFlag<T> = parserFlags.IOptionFlag<T>;
+type IBooleanFlag<T> = parserFlags.IBooleanFlag<T>;
+
+/**
+ * Adds a hidden NOT qualifier flag to all option flags (--language & --not-language) provided and returns the combined result
+ */
+function negateOptionFlags<
+	T extends Record<string, IOptionFlag<any> | IBooleanFlag<any>>
+>(
+	flags: T,
+	nonNegatable: (keyof T)[],
+): T & Record<string, IOptionFlag<any> | IBooleanFlag<any>> {
+	return Object.entries(flags).reduce<
+		Record<string, IOptionFlag<any> | IBooleanFlag<any>>
+	>((acc, [key, flag]) => {
+		acc[key] = flag;
+		if (flag.type === 'option' && !nonNegatable.includes(key)) {
+			acc[`not-${key}`] = { ...flag, char: undefined, hidden: true };
+		}
+		return acc;
+	}, {}) as T & Record<string, IOptionFlag<any> | IBooleanFlag<any>>;
+}
+
+export function buildFlags<
+	T extends Record<string, IOptionFlag<any> | IBooleanFlag<any>>
+>(
+	flags: T,
+	nonNegatable: (keyof T)[] = [],
+): T &
+	typeof BaseCommand['flags'] &
+	Record<string, IOptionFlag<any> | IBooleanFlag<any>> {
+	return {
+		...negateOptionFlags(flags, nonNegatable),
+		...BaseCommand.flags,
+	};
+}
 
 export default abstract class BaseCommand extends Command {
 	static args = [{ name: 'query' }];
@@ -78,6 +116,9 @@ export default abstract class BaseCommand extends Command {
 			if (k.startsWith('current-')) {
 				const trimmedKey = k.replace(/^current-/, '');
 				qs.push(`${trimmedKey}:${git.getUser()}`);
+			} else if (k.startsWith('not-')) {
+				const negatedKey = k.replace(/^not-/, '-');
+				qs.push(`${negatedKey}:${v}`);
 			} else {
 				qs.push(`${k}:${v}`);
 			}
