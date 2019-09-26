@@ -2,7 +2,11 @@ import { flags } from '@oclif/command';
 import chalk from 'chalk';
 
 import { ApiResponse } from '../api';
-import Command, { FormatOptions, TableResult } from '../base-command';
+import Command, {
+	buildFlags,
+	FormatOptions,
+	TableResult,
+} from '../base-command';
 
 export default class Code extends Command {
 	static description =
@@ -13,56 +17,58 @@ export default class Code extends Command {
 `,
 	];
 
-	static flags = {
-		in: flags.string({
-			description:
-				'Qualifies which fields are searched. With this qualifier you can restrict the search to the file contents (file), the file path (path), or both.',
-		}),
-		language: flags.string({
-			char: 'l',
-			description: "Searches code based on the language it's written in.",
-		}),
-		size: flags.string({
-			description: 'Finds files that match a certain size (in bytes).',
-		}),
-		path: flags.string({
-			description:
-				'Specifies the path prefix that the resulting file must be under.',
-		}),
-		filename: flags.string({
-			description: 'Matches files by a substring of the filename.',
-		}),
-		extension: flags.string({
-			description: 'Matches files with a certain extension after a dot.',
-		}),
-		user: flags.string({
-			char: 'u',
-			description:
-				'Limits searches to a specific user. Use --current-user to use the currently configured git username.',
-		}),
-		['current-user']: flags.boolean({
-			hidden: true,
-		}),
-		repo: flags.string({
-			char: 'r',
-			description: 'Limits searches to a specific repository.',
-		}),
-		org: flags.string({
-			char: 'o',
-			description: 'Limits searchs to a specific organization',
-		}),
-		text: flags.boolean({
-			char: 't',
-			description: 'Show full text match',
-		}),
-		sort: flags.enum({
-			char: 's',
-			options: ['indexed'],
-			description:
-				'The sort field. Can only be indexed, which indicates how recently a file has been indexed by the GitHub search infrastructure. Default: results are sorted by best match.',
-		}),
-		...Command.flags,
-	};
+	static flags = buildFlags(
+		{
+			in: flags.string({
+				description:
+					'Qualifies which fields are searched. With this qualifier you can restrict the search to the file contents (file), the file path (path), or both.',
+			}),
+			language: flags.string({
+				char: 'l',
+				description: "Searches code based on the language it's written in.",
+			}),
+			size: flags.string({
+				description: 'Finds files that match a certain size (in bytes).',
+			}),
+			path: flags.string({
+				description:
+					'Specifies the path prefix that the resulting file must be under.',
+			}),
+			filename: flags.string({
+				description: 'Matches files by a substring of the filename.',
+			}),
+			extension: flags.string({
+				description: 'Matches files with a certain extension after a dot.',
+			}),
+			user: flags.string({
+				char: 'u',
+				description:
+					'Limits searches to a specific user. Use --current-user to use the currently configured git username.',
+			}),
+			['current-user']: flags.boolean({
+				hidden: true,
+			}),
+			repo: flags.string({
+				char: 'r',
+				description: 'Limits searches to a specific repository.',
+			}),
+			org: flags.string({
+				char: 'o',
+				description: 'Limits searchs to a specific organization',
+			}),
+			text: flags.boolean({
+				char: 't',
+				description: 'Show full text match',
+			}),
+			sort: flags.enum({
+				char: 's',
+				options: ['indexed'],
+				description:
+					'The sort field. Can only be indexed, which indicates how recently a file has been indexed by the GitHub search infrastructure. Default: results are sorted by best match.',
+			}),
+		},
+		['sort', 'text'],
+	);
 
 	static args = [...Command.args];
 

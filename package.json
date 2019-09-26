@@ -10,6 +10,7 @@
   "dependencies": {
     "@oclif/command": "^1.4.4",
     "@oclif/config": "^1.3.60",
+    "@oclif/parser": "^3.8.4",
     "@oclif/plugin-help": "2",
     "chalk": "^2.3.2",
     "cli-ux": "^5.2.1",
@@ -35,6 +36,7 @@
     "@types/request-promise-native": "^1.0.14",
     "@types/sinon": "^7.0.13",
     "chai": "^4.1.2",
+    "cross-env": "^6.0.0",
     "globby": "^10.0.1",
     "mocha": "^6.2.0",
     "nock": "^11.3.5",
@@ -86,7 +88,7 @@
     "preversion": "npm run clean",
     "test": "mocha --forbid-only \"test/**/*.test.ts\"",
     "version": "oclif-dev readme && git add README.md",
-    "start": "npm run build && ./bin/run"
+    "debug": "cross-env DEBUG=${DEBUG:-ghs:*} ./bin/run"
   },
   "types": "lib/index.d.ts"
 }

@@ -239,6 +239,40 @@ describe('ghs commands', () => {
 				expect(ctx.stdout).to.contain('oclif');
 				expect(ctx.stdout).to.contain('https://github.com/oclif/oclif');
 			});
+
+		test
+			.nock('https://api.github.com', api =>
+				api
+					.get('/search/commits')
+					.query({ q: 'repo:oclif/oclif committer:jdxcode' })
+					.reply(
+						200,
+						require('../__fixtures__/commands_commits_runs_runs_oclif_repo_parser'),
+					),
+			)
+			.stdout()
+			.command([...args, '--repo', 'oclif/oclif', '--committer', 'jdxcode'])
+			.it('runs commits --repo oclif/oclif committer', ctx => {
+				expect(ctx.stdout).to.contain('oclif');
+				expect(ctx.stdout).to.contain('https://github.com/oclif/oclif');
+			});
+
+		test
+			.nock('https://api.github.com', api =>
+				api
+					.get('/search/commits')
+					.query({ q: 'repo:oclif/oclif -committer:jdxcode' })
+					.reply(
+						200,
+						require('../__fixtures__/commands_commits_runs_runs_oclif_repo_parser'),
+					),
+			)
+			.stdout()
+			.command([...args, '--repo', 'oclif/oclif', '--not-committer', 'jdxcode'])
+			.it('runs commits --repo oclif/oclif --not-committer', ctx => {
+				expect(ctx.stdout).to.contain('oclif');
+				expect(ctx.stdout).to.contain('https://github.com/oclif/oclif');
+			});
 	});
 
 	describe('code', () => {

@@ -28,7 +28,7 @@ $ npm install -g gh-search-cli
 $ ghs COMMAND
 running command...
 $ ghs (-v|--version|version)
-gh-search-cli/2.3.0 darwin-x64 node-v10.15.2
+gh-search-cli/2.4.0 darwin-x64 node-v10.16.3
 $ ghs --help [COMMAND]
 USAGE
   $ ghs COMMAND
@@ -89,7 +89,7 @@ EXAMPLE
   $ ghs code --extension js "import _ from 'lodash'"
 ```
 
-_See code: [src/commands/code.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.3.0/src/commands/code.ts)_
+_See code: [src/commands/code.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.4.0/src/commands/code.ts)_
 
 ## `ghs commits [QUERY]`
 
@@ -141,6 +141,8 @@ OPTIONS
 
   --repo=repo                              Limits searches to a specific repository.
 
+  --tree=tree                              Matches commits with the specified git tree hash.
+
   --user=user                              Limits searches to a specific user. Use --current-user to use the currently
                                            configured git username.
 
@@ -148,7 +150,7 @@ EXAMPLE
   $ ghs commit --repo octocat/Spoon-Knife css
 ```
 
-_See code: [src/commands/commits.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.3.0/src/commands/commits.ts)_
+_See code: [src/commands/commits.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.4.0/src/commands/commits.ts)_
 
 ## `ghs config`
 
@@ -168,7 +170,7 @@ EXAMPLE
   config cleared
 ```
 
-_See code: [src/commands/config.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.3.0/src/commands/config.ts)_
+_See code: [src/commands/config.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.4.0/src/commands/config.ts)_
 
 ## `ghs help [COMMAND]`
 
@@ -185,7 +187,7 @@ OPTIONS
   --all  see all commands in CLI
 ```
 
-_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v1.2.11/src/commands/help.ts)_
+_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v2.2.1/src/commands/help.ts)_
 
 ## `ghs issues [QUERY]`
 
@@ -196,90 +198,125 @@ USAGE
   $ ghs issues [QUERY]
 
 OPTIONS
-  -c, --created=created                  Filters issues or pull requests based on date of creation,or when they were
-                                         last updated.
+  -c, --created=created                                Filters issues or pull requests based on date of creation,or when
+                                                       they were last updated.
 
-  -j, --json                             Return json. Can be piped to jq.
+  -j, --json                                           Return json. Can be piped to jq.
 
-  -l, --language=language                Searches for issues or pull requests within repositories that match a certain
-                                         language.
+  -l, --language=language                              Searches for issues or pull requests within repositories that
+                                                       match a certain language.
 
-  -m, --merged=merged                    Filters pull requests based on the date when they were merged.
+  -m, --merged=merged                                  Filters pull requests based on the date when they were merged.
 
-  -o, --open                             Open the first result in your browser.
+  -o, --open                                           Open the first result in your browser.
 
-  -r, --repo=repo                        Limits searches to a specific repository.
+  -r, --repo=repo                                      Limits searches to a specific repository.
 
-  -s, --sort=(comments|created|updated)  The sort field. Default: results are sorted by best match.
+  -s, --sort=(comments|created|updated)                The sort field. Default: results are sorted by best match.
 
-  -s, --status=status                    Filters pull requests based on the commit status.
+  -s, --status=status                                  Filters pull requests based on the commit status.
 
-  -t, --type=(issue|pr)                  With this qualifier you can restrict the search to issues (issue) or pull
-                                         request (pr) only.
+  -t, --type=(issue|pr)                                With this qualifier you can restrict the search to issues (issue)
+                                                       or pull request (pr) only.
 
-  -u, --updated=updated                  Filters issues or pull requests based on date of creation, or when they were
-                                         last updated.
+  -u, --updated=updated                                Filters issues or pull requests based on date of creation, or
+                                                       when they were last updated.
 
-  -u, --user=user                        Limits searches to a specific user. Use --current-user to use the currently
-                                         configured git username.
+  -u, --user=user                                      Limits searches to a specific user. Use --current-user to use the
+                                                       currently configured git username.
 
-  --api-base-url=api-base-url            The github api token. Defaults to configured GHE url or
-                                         'https://api.github.com'
+  --SHA=SHA                                            If you know the specific SHA hash of a commit, you can use it to
+                                                       search for pull requests that contain that SHA. The SHA syntax
+                                                       must be at least seven characters.
 
-  --api-token=api-token                  The github api token. Defaults to configured api token
+  --api-base-url=api-base-url                          The github api token. Defaults to configured GHE url or
+                                                       'https://api.github.com'
 
-  --[no-]archived                        Filters issues or pull requests based on whether they are in an archived
-                                         repository.
+  --api-token=api-token                                The github api token. Defaults to configured api token
 
-  --assignee=assignee                    Finds issues or pull requeststhat are assigned to a certain user. Use
-                                         --current-author to use the currently configured git username.
+  --[no-]archived                                      Filters issues or pull requests based on whether they are in an
+                                                       archived repository.
 
-  --author=author                        Finds issues or pull requests created by a certain user. Use --current-author
-                                         to use the currently configured git username.
+  --assignee=assignee                                  Finds issues or pull requeststhat are assigned to a certain user.
+                                                       Use --current-author to use the currently configured git
+                                                       username.
 
-  --base=base                            Filters pull requests based on the branch that they came from.
+  --author=author                                      Finds issues or pull requests created by a certain user. Use
+                                                       --current-author to use the currently configured git username.
 
-  --closed=closed                        Filters issues or pull requests based on the date when they were closed.
+  --base=base                                          Filters pull requests based on the branch that they came from.
 
-  --commenter=commenter                  Finds issues or pull requests that a certain user commented on. Use
-                                         --current-commenter to use the currently configured git username.
+  --closed=closed                                      Filters issues or pull requests based on the date when they were
+                                                       closed.
 
-  --comments=comments                    Filters issues or pull requests based on the quantity of comments.
+  --commenter=commenter                                Finds issues or pull requests that a certain user commented on.
+                                                       Use --current-commenter to use the currently configured git
+                                                       username.
 
-  --head=head                            Filters pull requests based on the branch that they are modifying.
+  --comments=comments                                  Filters issues or pull requests based on the quantity of
+                                                       comments.
 
-  --in=in                                Qualifies which fields are searched. With this qualifier you can restrict the
-                                         searchto just the title (title), body (body), comments (comments), or any
-                                         combination of these.
+  --head=head                                          Filters pull requests based on the branch that they are
+                                                       modifying.
 
-  --involves=involves                    Finds issues or pull requests that were either created by a certain user,
-                                         assigned to that user, mention that user, or were commented on by that user.
-                                         Use --current-involves to use the currently configured git username.
+  --in=in                                              Qualifies which fields are searched. With this qualifier you can
+                                                       restrict the searchto just the title (title), body (body),
+                                                       comments (comments), or any combination of these.
 
-  --is=is                                Searches for items within repositories that match a certain state, such as
-                                         open, closed, or merged
+  --interactions=interactions                          You can filter issues and pull requests by the number of
+                                                       interactions with the interactions qualifier along with greater
+                                                       than, less than, and range qualifiers. The interactions count is
+                                                       the number of reactions and comments on an issue or pull request.
 
-  --labels=labels                        Filters issues or pull requests based on their labels.
+  --involves=involves                                  Finds issues or pull requests that were either created by a
+                                                       certain user, assigned to that user, mention that user, or were
+                                                       commented on by that user. Use --current-involves to use the
+                                                       currently configured git username.
 
-  --mentions=mentions                    Finds issues or pull requests that mention a certain user. Use --current-author
-                                         to use the currently configured git username.
+  --is=is                                              Searches for items within repositories that match a certain
+                                                       state, such as open, closed, or merged
 
-  --no=no                                Filters items missing certain metadata, such as label, milestone, or assignee
+  --label=label                                        Filters issues or pull requests based on their labels.
 
-  --order=(asc|desc)                     The sort order if sort parameter is provided. Default: desc
+  --mentions=mentions                                  Finds issues or pull requests that mention a certain user. Use
+                                                       --current-author to use the currently configured git username.
 
-  --project=project                      Limits searches to a specific project board in a repository or organization.
+  --milestone=milestone                                Finds issues or pull requests that are a part of a milestone
+                                                       within a repository.
 
-  --state=(open|closed)                  Filter issues or pull requests based on whether they're open or closed.
+  --no=no                                              Filters items missing certain metadata, such as label, milestone,
+                                                       or assignee
 
-  --team=team                            For organizations you're a member of, finds issues or pull requests that
-                                         @mention a team within the organization.
+  --order=(asc|desc)                                   The sort order if sort parameter is provided. Default: desc
+
+  --org=org                                            Limits searches to a specific org.
+
+  --project=project                                    Limits searches to a specific project board in a repository or
+                                                       organization.
+
+  --reactions=reactions                                You can filter issues and pull requests by the number of
+                                                       reactions using the reactions qualifier along with greater than,
+                                                       less than, and range qualifiers.
+
+  --review=(none|required|approved|changes_requested)  You can filter pull requests based on their review status
+
+  --review-requested=review-requested                  Filter pull requests by requested reviewer.
+
+  --reviewed-by=reviewed-by                            Filter pull requests by reviewer.
+
+  --state=(open|closed)                                Filter issues or pull requests based on whether they're open or
+                                                       closed.
+
+  --team=team                                          For organizations you're a member of, finds issues or pull
+                                                       requests that @mention a team within the organization.
+
+  --team-review-requested=team-review-requested        Filter pull requests by requested reviewer.
 
 EXAMPLE
   $ ghs issues --is open --involves my-github-username
 ```
 
-_See code: [src/commands/issues.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.3.0/src/commands/issues.ts)_
+_See code: [src/commands/issues.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.4.0/src/commands/issues.ts)_
 
 ## `ghs notifications`
 
@@ -297,12 +334,10 @@ OPTIONS
 
   -j, --json                   Return json. Can be piped to jq.
 
-  -o, --owner=owner            Filter notifications to a owner, required with --repo flag
+  -o, --open                   Open the first result in your browser.
 
   -p, --participating          If true, only shows notifications in which the user is directly participating or
                                mentioned. Default: false
-
-  -r, --repo=repo              Filter notifications to a repository, required with --owner flag
 
   -s, --since=since            Only show notifications updated after the given time. This is a timestamp in ISO 8601
                                format: YYYY-MM-DDTHH:MM:SSZ
@@ -310,9 +345,13 @@ OPTIONS
   --api-base-url=api-base-url  The github api token. Defaults to configured GHE url or 'https://api.github.com'
 
   --api-token=api-token        The github api token. Defaults to configured api token
+
+  --owner=owner                Filter notifications to a owner, required with --repo flag
+
+  --repo=repo                  Filter notifications to a repository, required with --owner flag
 ```
 
-_See code: [src/commands/notifications.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.3.0/src/commands/notifications.ts)_
+_See code: [src/commands/notifications.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.4.0/src/commands/notifications.ts)_
 
 ## `ghs repositories [QUERY]`
 
@@ -323,39 +362,64 @@ USAGE
   $ ghs repositories [QUERY]
 
 OPTIONS
-  -c, --created=created             Filters repositories based on date of creation, or when they were last updated.
-  -f, --[no-]fork                   Filters whether forked repositories should be included (--fork) or not (--no-fork).
-  -j, --json                        Return json. Can be piped to jq.
-  -l, --language=language           Searches repositories based on the language they're written in.
-  -o, --open                        Open the first result in your browser.
-  -p, --pushed=pushed               Filters repositories based on date of creation, or when they were last updated.
-  -r, --repo=repo                   Limits searches to a specific repo.
-  -s, --sort=(stars|forks|updated)  The sort field. Default: results are sorted by best match.
+  -c, --created=created                    Filters repositories based on date of creation, or when they were last
+                                           updated.
 
-  -u, --user=user                   Limits searches to a specific user. Use --current-user to filter on current github
-                                    username
+  -f, --[no-]fork                          Filters whether forked repositories should be included (--fork) or not
+                                           (--no-fork).
 
-  --api-base-url=api-base-url       The github api token. Defaults to configured GHE url or 'https://api.github.com'
+  -j, --json                               Return json. Can be piped to jq.
 
-  --api-token=api-token             The github api token. Defaults to configured api token
+  -l, --language=language                  Searches repositories based on the language they're written in.
 
-  --[no-]archived                   Filters whether archived repositories should be included (--archived) or not
-                                    (--no-archived).
+  -o, --open                               Open the first result in your browser.
 
-  --forks=forks                     Filters repositories based on the number of forks.
+  -p, --pushed=pushed                      Filters repositories based on date of creation, or when they were last
+                                           updated.
 
-  --in=in                           Qualifies which fields are searched. With this qualifier you can restrict the search
-                                    to just the repository name, description, readme, or any combination of these.
+  -r, --repo=repo                          Limits searches to a specific repo.
 
-  --license=license                 Filters repositories by license or license family, using the license keyword.
+  -s, --sort=(stars|forks|updated)         The sort field. Default: results are sorted by best match.
 
-  --order=(asc|desc)                The sort order if sort parameter is provided. Default: desc
+  -u, --user=user                          Limits searches to a specific user. Use --current-user to filter on current
+                                           github username
 
-  --size=size                       Finds repositories that match a certain size (in kilobytes).
+  --api-base-url=api-base-url              The github api token. Defaults to configured GHE url or
+                                           'https://api.github.com'
 
-  --stars=stars                     Searches repositories based on the number of stars.
+  --api-token=api-token                    The github api token. Defaults to configured api token
 
-  --topic=topic                     Filters repositories based on the specified topic.
+  --[no-]archived                          Filters whether archived repositories should be included (--archived) or not
+                                           (--no-archived).
+
+  --followers=followers                    Searches repositories based on the number of followers.
+
+  --forks=forks                            Filters repositories based on the number of forks.
+
+  --good-first-issues=good-first-issues    Search for repositories that have a minimum number of issues labeled
+                                           help-wanted.
+
+  --help-wanted-issues=help-wanted-issues  Search for repositories that have a minimum number of issues labeled
+                                           good-first-issue.
+
+  --in=in                                  Qualifies which fields are searched. With this qualifier you can restrict the
+                                           search to just the repository name, description, readme, or any combination
+                                           of these.
+
+  --license=license                        Filters repositories by license or license family, using the license keyword.
+
+  --[no-]mirror                            Search repositories based on whether or not they're a mirror and are hosted
+                                           elsewhere.
+
+  --order=(asc|desc)                       The sort order if sort parameter is provided. Default: desc
+
+  --size=size                              Finds repositories that match a certain size (in kilobytes).
+
+  --stars=stars                            Searches repositories based on the number of stars.
+
+  --topic=topic                            Filters repositories based on the specified topic.
+
+  --topics=topics                          Search repositories by the number of topics that have been applied to them.
 
 ALIASES
   $ ghs repo
@@ -366,5 +430,5 @@ EXAMPLE
      GoogleChrome/puppeteer (https://github.com/GoogleChrome/puppeteer)
 ```
 
-_See code: [src/commands/repositories.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.3.0/src/commands/repositories.ts)_
+_See code: [src/commands/repositories.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.4.0/src/commands/repositories.ts)_
 <!-- commandsstop -->
