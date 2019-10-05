@@ -7,6 +7,7 @@ Provides a cli for searching github.com. Supports repositories, code, issues and
 [![Appveyor CI](https://ci.appveyor.com/api/projects/status/github/feinoujc/gh-search-cli?branch=master&svg=true)](https://ci.appveyor.com/project/feinoujc/gh-search-cli/branch/master)
 [![Codecov](https://codecov.io/gh/feinoujc/gh-search-cli/branch/master/graph/badge.svg)](https://codecov.io/gh/feinoujc/gh-search-cli)
 [![License](https://img.shields.io/npm/l/gh-search-cli.svg)](https://github.com/feinoujc/gh-search-cli/blob/master/package.json)
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=feinoujc/gh-search-cli)](https://dependabot.com)
 
 <!-- toc -->
 * [Setup](#setup)
