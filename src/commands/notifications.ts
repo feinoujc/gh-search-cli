@@ -141,7 +141,7 @@ export default class Notifications extends Command {
 		if (err instanceof StatusCodeError) {
 			const lines: Array<string> = [];
 			lines.push(err.error.message);
-			(err.error.errors || []).forEach((_err: Error) =>
+			(err.error.errors ?? []).forEach((_err: Error) =>
 				lines.push(_err.message),
 			);
 			this.warn(lines.join('\n'));
