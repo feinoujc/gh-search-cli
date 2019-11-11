@@ -79,14 +79,10 @@ const hook: Hook<'init'> = async function({ config, id }) {
 	const blacklist = ['config', 'help', '--help', '--verson'];
 	if (blacklist.includes(id!)) return;
 
-	let token = '';
-	let baseUrl = '';
 	const file = new AuthFile(config);
 	const auth = await file.getConfig();
-	if (auth && auth.token && auth.baseUrl) {
-		token = auth.token;
-		baseUrl = auth.baseUrl;
-	}
+	const token = auth?.token;
+	const baseUrl = auth?.baseUrl;
 
 	if (!token || !baseUrl) {
 		await file.setConfig(await prompt(config));

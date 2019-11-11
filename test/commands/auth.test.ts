@@ -2,7 +2,7 @@ import { expect, test } from '@oclif/test';
 import * as nock from 'nock';
 import * as sinon from 'sinon';
 
-import AuthFile from '../../src/auth-file';
+import AuthFile, { AuthConfig } from '../../src/auth-file';
 import questions from '../../src/hooks/init/auth-questions';
 
 describe('hooks', () => {
@@ -41,7 +41,7 @@ describe('hooks', () => {
 	});
 
 	describe('needs configured (github, no 2fa)', () => {
-		let configStub: sinon.SinonStub;
+		let configStub: sinon.SinonStub<[AuthConfig], Promise<any>>;
 		beforeEach(() => {
 			sandbox.stub(AuthFile.prototype, 'getConfig').resolves({});
 			configStub = sandbox.stub(AuthFile.prototype, 'setConfig').resolves();
@@ -70,7 +70,7 @@ describe('hooks', () => {
 	});
 
 	describe('bad login', () => {
-		let configStub: sinon.SinonStub;
+		let configStub: sinon.SinonStub<[AuthConfig], Promise<any>>;
 		beforeEach(() => {
 			sandbox.stub(AuthFile.prototype, 'getConfig').resolves({});
 			configStub = sandbox.stub(AuthFile.prototype, 'setConfig').resolves();
@@ -121,7 +121,7 @@ describe('hooks', () => {
 	});
 
 	describe('needs configured (github, 2fa)', () => {
-		let configStub: sinon.SinonStub;
+		let configStub: sinon.SinonStub<[AuthConfig], Promise<any>>;
 		beforeEach(() => {
 			sandbox.stub(AuthFile.prototype, 'getConfig').resolves({});
 			configStub = sandbox.stub(AuthFile.prototype, 'setConfig').resolves();
@@ -166,7 +166,7 @@ describe('hooks', () => {
 	});
 
 	describe('needs configured (ghe, no 2fa)', () => {
-		let configStub: sinon.SinonStub;
+		let configStub: sinon.SinonStub<[AuthConfig], Promise<any>>;
 		beforeEach(() => {
 			sandbox.stub(AuthFile.prototype, 'getConfig').resolves({});
 			configStub = sandbox.stub(AuthFile.prototype, 'setConfig').resolves();
