@@ -1,5 +1,5 @@
 import { flags } from '@oclif/command';
-import chalk from 'chalk';
+import * as chalk from 'chalk';
 
 import { ApiResponse } from '../api';
 import Command, { buildFlags, TableResult } from '../base-command';
