@@ -16,7 +16,7 @@ config cleared
 			description: 'clears the local config file including the auth token.',
 		}),
 		token: flags.string({ description: 'sets the github token to use.' }),
-		['base-url']: flags.string({
+		'base-url': flags.string({
 			description:
 				'sets the github base url for github enterprise instances (ex: https://github.company.com/api/v3).',
 		}),
@@ -29,7 +29,7 @@ config cleared
 
 	async run() {
 		const { flags } = this.parse(Config);
-		const { clear, token, ['base-url']: baseUrl } = flags;
+		const { clear, token, 'base-url': baseUrl } = flags;
 		const file = new AuthFile(this.config);
 		if (clear) {
 			await file.clear();

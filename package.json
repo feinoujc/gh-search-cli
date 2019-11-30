@@ -23,8 +23,8 @@
   },
   "devDependencies": {
     "@oclif/dev-cli": "^1.22.0",
+    "@oclif/nyc-config": "1",
     "@oclif/test": "^1.2.4",
-    "@oclif/tslint": "^3.1.1",
     "@types/chai": "^4.1.2",
     "@types/fs-extra": "^8.0.0",
     "@types/git-user-name": "^2.0.0",
@@ -36,18 +36,21 @@
     "@types/sinon": "^7.0.13",
     "chai": "^4.1.2",
     "cross-env": "^6.0.0",
+    "eslint": "^5.3",
+    "eslint-config-oclif": "^3.1.0",
+    "eslint-config-oclif-typescript": "^0.1.0",
+    "eslint-config-prettier": "^6.7.0",
     "globby": "^10.0.1",
     "mocha": "^6.2.0",
     "nock": "^11.3.5",
-    "prettier": "^1.18.2",
+    "nyc": "^14.1.1",
+    "prettier": "^1.19.1",
     "sinon": "^7.5.0",
     "ts-node": "^8.1.0",
-    "tslint": "^5.9.1",
-    "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.4.4"
   },
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=10"
   },
   "files": [
     ".oclif.manifest.json",
@@ -76,16 +79,16 @@
   },
   "repository": "feinoujc/gh-search-cli",
   "scripts": {
+    "posttest": "eslint . --ext .ts --config .eslintrc",
+    "prepack": "rm -rf lib && tsc -b",
+    "test": "nyc --reporter lcov --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
     "build": "rm -rf lib && tsc",
     "clean": "rm -f .oclif.manifest.json",
     "prettier:check": "prettier --check **/*.{js,json,ts,yaml,yml}",
     "prettier": "prettier --write **/*.{js,json,ts,yaml,yml}",
-    "lint": "tsc -p test --noEmit && tslint -p test -t stylish",
     "postpublish": "npm run clean",
-    "posttest": "npm run lint && npm run prettier:check",
     "prepublishOnly": "npm run build && oclif-dev manifest",
     "preversion": "npm run clean",
-    "test": "mocha --forbid-only \"test/**/*.test.ts\"",
     "version": "oclif-dev readme && git add README.md",
     "debug": "cross-env DEBUG=${DEBUG:-ghs:*} ./bin/run"
   },

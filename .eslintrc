@@ -1,3 +1,18 @@
 {
-  "extends": "oclif"
+  "extends": [
+    "oclif",
+    "oclif-typescript",
+    "prettier"
+  ], 
+  "rules": {
+    "@typescript-eslint/no-unused-vars": [
+      "error", 
+      { 
+        "vars": "local", 
+        "args": "after-used",  
+        "argsIgnorePattern": "^_", 
+        "ignoreRestSiblings": true 
+        }
+    ]
+  }
 }

@@ -44,28 +44,14 @@ function negateOptionFlags<
 	}, {}) as T & Record<string, IOptionFlag<any> | IBooleanFlag<any>>;
 }
 
-export function buildFlags<
-	T extends Record<string, IOptionFlag<any> | IBooleanFlag<any>>
->(
-	flags: T,
-	nonNegatable: (keyof T)[] = [],
-): T &
-	typeof BaseCommand['flags'] &
-	Record<string, IOptionFlag<any> | IBooleanFlag<any>> {
-	return {
-		...negateOptionFlags(flags, nonNegatable),
-		...BaseCommand.flags,
-	};
-}
-
 export default abstract class BaseCommand extends Command {
 	static args = [{ name: 'query' }];
 
 	static flags = {
-		['api-token']: flags.string({
+		'api-token': flags.string({
 			description: 'The github api token. Defaults to configured api token',
 		}),
-		['api-base-url']: flags.string({
+		'api-base-url': flags.string({
 			description:
 				"The github api token. Defaults to configured GHE url or 'https://api.github.com'",
 		}),
@@ -107,7 +93,7 @@ export default abstract class BaseCommand extends Command {
 			qs.push(args.query);
 		}
 
-		let { ['api-token']: apiToken, ['api-base-url']: baseUrl } = flags;
+		let { 'api-token': apiToken, 'api-base-url': baseUrl } = flags;
 
 		const { sort, order, open, json, text, ...options } = flags;
 
@@ -124,7 +110,7 @@ export default abstract class BaseCommand extends Command {
 			}
 		});
 
-		if (!qs.length) {
+		if (qs.length === 0) {
 			this._help();
 			return this.exit(-1);
 		}
@@ -144,7 +130,7 @@ export default abstract class BaseCommand extends Command {
 		const type = `${this.id}`;
 
 		const print = async (resp: ApiResponse, opts: FormatOptions) => {
-			if (!resp.items.length) {
+			if (resp.items.length === 0) {
 				this.warn('no results found');
 			} else if (opts.open) {
 				await opener.open(resp.items[0].html_url);
@@ -184,4 +170,18 @@ export default abstract class BaseCommand extends Command {
 		await print(resp, opts);
 		return next(resp, opts);
 	}
+}
+
+export function buildFlags<
+	T extends Record<string, IOptionFlag<any> | IBooleanFlag<any>>
+>(
+	flags: T,
+	nonNegatable: (keyof T)[] = [],
+): T &
+	typeof BaseCommand['flags'] &
+	Record<string, IOptionFlag<any> | IBooleanFlag<any>> {
+	return {
+		...negateOptionFlags(flags, nonNegatable),
+		...BaseCommand.flags,
+	};
 }

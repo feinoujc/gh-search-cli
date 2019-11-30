@@ -52,8 +52,8 @@ async function prompt(config: IConfig): Promise<AuthConfig> {
 				},
 			});
 			return { token, baseUrl };
-		} catch (err) {
-			const sce = err as StatusCodeError;
+		} catch (error) {
+			const sce = error as StatusCodeError;
 			if (sce) {
 				if (
 					sce.statusCode === 401 &&
@@ -62,14 +62,17 @@ async function prompt(config: IConfig): Promise<AuthConfig> {
 				) {
 					const otp = await questions.otp();
 					return auth({ username, password, otp });
-				} else if (sce.statusCode === 401) {
+				} 
+				
+				if (sce.statusCode === 401) {
 					process.stderr.write('Bad login. Try again\n');
 					return auth({});
-				} else {
-					throw err;
-				}
+				} 
+			
+				throw error;
+				
 			}
-			throw err;
+			throw error;
 		}
 	};
 	return auth();

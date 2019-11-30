@@ -35,35 +35,35 @@ export default class Issues extends Command {
 				description:
 					'Finds issues or pull requests created by a certain user. Use --current-author to use the currently configured git username.',
 			}),
-			['current-author']: flags.boolean({
+			'current-author': flags.boolean({
 				hidden: true,
 			}),
 			assignee: flags.string({
 				description:
 					'Finds issues or pull requeststhat are assigned to a certain user. Use --current-author to use the currently configured git username.',
 			}),
-			['current-assignee']: flags.boolean({
+			'current-assignee': flags.boolean({
 				hidden: true,
 			}),
 			mentions: flags.string({
 				description:
 					'Finds issues or pull requests that mention a certain user. Use --current-author to use the currently configured git username.',
 			}),
-			['current-mentions']: flags.boolean({
+			'current-mentions': flags.boolean({
 				hidden: true,
 			}),
 			commenter: flags.string({
 				description:
 					'Finds issues or pull requests that a certain user commented on. Use --current-commenter to use the currently configured git username.',
 			}),
-			['current-commenter']: flags.boolean({
+			'current-commenter': flags.boolean({
 				hidden: true,
 			}),
 			involves: flags.string({
 				description:
 					'Finds issues or pull requests that were either created by a certain user, assigned to that user, mention that user, or were commented on by that user. Use --current-involves to use the currently configured git username.',
 			}),
-			['current-involves']: flags.boolean({
+			'current-involves': flags.boolean({
 				hidden: true,
 			}),
 			team: flags.string({
@@ -161,7 +161,7 @@ export default class Issues extends Command {
 				description:
 					'Limits searches to a specific user. Use --current-user to use the currently configured git username.',
 			}),
-			['current-user']: flags.boolean({
+			'current-user': flags.boolean({
 				hidden: true,
 			}),
 			repo: flags.string({
