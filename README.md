@@ -3,8 +3,6 @@ gh-search-cli
 Provides a cli for searching github.com. Supports repositories, code, issues and commits. Can be configured for github enterprise instances as well. Built using [oclif](https://github.com/oclif/oclif)
 
 [![Version](https://img.shields.io/npm/v/gh-search-cli.svg)](https://npmjs.org/package/gh-search-cli)
-[![CircleCI](https://circleci.com/gh/feinoujc/gh-search-cli/tree/master.svg?style=shield)](https://circleci.com/gh/feinoujc/gh-search-cli/tree/master)
-[![Appveyor CI](https://ci.appveyor.com/api/projects/status/github/feinoujc/gh-search-cli?branch=master&svg=true)](https://ci.appveyor.com/project/feinoujc/gh-search-cli/branch/master)
 [![Codecov](https://codecov.io/gh/feinoujc/gh-search-cli/branch/master/graph/badge.svg)](https://codecov.io/gh/feinoujc/gh-search-cli)
 [![License](https://img.shields.io/npm/l/gh-search-cli.svg)](https://github.com/feinoujc/gh-search-cli/blob/master/package.json)
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=feinoujc/gh-search-cli)](https://dependabot.com)
