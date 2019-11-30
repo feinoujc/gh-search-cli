@@ -9,6 +9,7 @@ export type AuthConfig = {
 
 export default class AuthFile {
 	config: Config.IConfig;
+
 	path: string;
 
 	constructor(config: Config.IConfig) {
@@ -21,17 +22,15 @@ export default class AuthFile {
 			const auth = await fs.readJSON(this.path);
 			if (auth && auth.token && auth.baseUrl) {
 				return auth;
-			} else {
+			}
+			await fs.outputJson(this.path, {});
+			return {};
+		} catch (error) {
+			if (error.code === 'ENOENT') {
 				await fs.outputJson(this.path, {});
 				return {};
 			}
-		} catch (err) {
-			if (err.code === 'ENOENT') {
-				await fs.outputJson(this.path, {});
-				return {};
-			} else {
-				throw err;
-			}
+			throw error;
 		}
 	}
 

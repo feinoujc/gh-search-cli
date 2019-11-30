@@ -13,8 +13,8 @@ function filteredBaseOptions(): Pick<
 	typeof BaseCommand['flags'],
 	'api-base-url' | 'api-token' | 'json' | 'open'
 > {
-	// tslint:disable-next-line:no-unused
 	const { order, ...opts } = BaseCommand.flags;
+
 	return opts;
 }
 
@@ -77,8 +77,9 @@ export default class Notifications extends Command {
 	async run() {
 		const { flags } = this.parse(Notifications);
 		let {
-			['api-token']: apiToken,
-			['api-base-url']: baseUrl,
+			'api-token': apiToken,
+			'api-base-url': baseUrl,
+			// eslint-disable-next-line prefer-const
 			...params
 		} = flags;
 
@@ -103,7 +104,7 @@ export default class Notifications extends Command {
 		) => {
 			if (opts.json) {
 				this.log(JSON.stringify(resp.items));
-			} else if (!resp.items.length) {
+			} else if (resp.items.length === 0) {
 				this.warn('no results found');
 			} else {
 				if (opts.open) {

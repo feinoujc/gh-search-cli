@@ -1,7 +1,5 @@
---require test/helpers/init.js
 --require ts-node/register
---require source-map-support/register
 --watch-extensions ts
 --recursive
 --reporter spec
---timeout 5000
+--timeout 20000

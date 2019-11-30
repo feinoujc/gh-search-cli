@@ -23,22 +23,22 @@ export default class Code extends Command {
 				description:
 					'Matches commits committed by a user (based on email settings).',
 			}),
-			['author-name']: flags.string({
+			'author-name': flags.string({
 				description: 'Matches commits by author name.',
 			}),
-			['committer-name']: flags.string({
+			'committer-name': flags.string({
 				description: 'Matches commits by committer name.',
 			}),
-			['author-email']: flags.string({
+			'author-email': flags.string({
 				description: 'Matches commits by author email.',
 			}),
-			['committer-email']: flags.string({
+			'committer-email': flags.string({
 				description: 'Matches commits by committer email.',
 			}),
-			['author-date']: flags.string({
+			'author-date': flags.string({
 				description: 'Matches commits by author date range.',
 			}),
-			['committer-date']: flags.string({
+			'committer-date': flags.string({
 				description: 'Matches commits by committer date range.',
 			}),
 			merge: flags.boolean({
@@ -63,7 +63,7 @@ export default class Code extends Command {
 				description:
 					'Limits searches to a specific user. Use --current-user to use the currently configured git username.',
 			}),
-			['current-user']: flags.boolean({
+			'current-user': flags.boolean({
 				hidden: true,
 			}),
 			org: flags.string({

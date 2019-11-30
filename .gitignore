@@ -5,3 +5,5 @@ package-lock.json
 /lib
 /node_modules
 /tmp
+.nyc_output
+coverage/
