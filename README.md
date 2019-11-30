@@ -29,7 +29,7 @@ $ npm install -g gh-search-cli
 $ ghs COMMAND
 running command...
 $ ghs (-v|--version|version)
-gh-search-cli/2.4.0 darwin-x64 node-v10.16.3
+gh-search-cli/2.5.0 darwin-x64 node-v10.17.0
 $ ghs --help [COMMAND]
 USAGE
   $ ghs COMMAND
@@ -90,7 +90,7 @@ EXAMPLE
   $ ghs code --extension js "import _ from 'lodash'"
 ```
 
-_See code: [src/commands/code.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.4.0/src/commands/code.ts)_
+_See code: [src/commands/code.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.5.0/src/commands/code.ts)_
 
 ## `ghs commits [QUERY]`
 
@@ -151,7 +151,7 @@ EXAMPLE
   $ ghs commit --repo octocat/Spoon-Knife css
 ```
 
-_See code: [src/commands/commits.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.4.0/src/commands/commits.ts)_
+_See code: [src/commands/commits.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.5.0/src/commands/commits.ts)_
 
 ## `ghs config`
 
@@ -171,7 +171,7 @@ EXAMPLE
   config cleared
 ```
 
-_See code: [src/commands/config.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.4.0/src/commands/config.ts)_
+_See code: [src/commands/config.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.5.0/src/commands/config.ts)_
 
 ## `ghs help [COMMAND]`
 
@@ -317,7 +317,7 @@ EXAMPLE
   $ ghs issues --is open --involves my-github-username
 ```
 
-_See code: [src/commands/issues.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.4.0/src/commands/issues.ts)_
+_See code: [src/commands/issues.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.5.0/src/commands/issues.ts)_
 
 ## `ghs notifications`
 
@@ -352,7 +352,7 @@ OPTIONS
   --repo=repo                  Filter notifications to a repository, required with --owner flag
 ```
 
-_See code: [src/commands/notifications.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.4.0/src/commands/notifications.ts)_
+_See code: [src/commands/notifications.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.5.0/src/commands/notifications.ts)_
 
 ## `ghs repositories [QUERY]`
 
@@ -431,5 +431,5 @@ EXAMPLE
      GoogleChrome/puppeteer (https://github.com/GoogleChrome/puppeteer)
 ```
 
-_See code: [src/commands/repositories.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.4.0/src/commands/repositories.ts)_
+_See code: [src/commands/repositories.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.5.0/src/commands/repositories.ts)_
 <!-- commandsstop -->
