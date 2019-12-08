@@ -36,7 +36,7 @@
     "@types/sinon": "^7.0.13",
     "chai": "^4.1.2",
     "cross-env": "^6.0.0",
-    "eslint": "^5.3",
+    "eslint": "^6.7",
     "eslint-config-oclif": "^3.1.0",
     "eslint-config-oclif-typescript": "^0.1.0",
     "eslint-config-prettier": "^6.7.0",
