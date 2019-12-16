@@ -685,9 +685,9 @@ cli-progress@^3.4.0:
     string-width "^2.1.1"
 
 cli-ux@^5.2.1:
-  version "5.4.0"
-  resolved "https://registry.yarnpkg.com/cli-ux/-/cli-ux-5.4.0.tgz#84f5a968c67e8cc2b6f244dc346e79cabba152dc"
-  integrity sha512-j5GmlUJEc37SHILLQAUL+4NymK1sjcM+kmwnmRSnzzCOisbFE4zotrN8BBKQhFEyOpqFxUdbuP0sdc8YEGF6VA==
+  version "5.4.1"
+  resolved "https://registry.yarnpkg.com/cli-ux/-/cli-ux-5.4.1.tgz#d0eb2509923acd43989e11a9297de515adde9079"
+  integrity sha512-x5CJXJPKBrEo6o8Uy/Upajb9OWYMhTzOpRvKZyZ68kkHysiGd9phGP71WyHZfLUkhwdvpNUFkY2tsDr0ogyocg==
   dependencies:
     "@oclif/command" "^1.5.1"
     "@oclif/errors" "^1.2.1"
@@ -702,7 +702,7 @@ cli-ux@^5.2.1:
     extract-stack "^1.0.0"
     fs-extra "^7.0.1"
     hyperlinker "^1.0.0"
-    indent-string "^3.2.0"
+    indent-string "^4.0.0"
     is-wsl "^1.1.0"
     js-yaml "^3.13.1"
     lodash "^4.17.11"
@@ -1706,6 +1706,11 @@ indent-string@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/indent-string/-/indent-string-3.2.0.tgz#4a5fd6d27cc332f37e5419a504dbb837105c9289"
   integrity sha1-Sl/W0nzDMvN+VBmlBNu4NxBckok=
+
+indent-string@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/indent-string/-/indent-string-4.0.0.tgz#624f8f4497d619b2d9768531d58f4122854d7251"
+  integrity sha512-EdDDZu4A2OyIK7Lr/2zG+w5jmbuk1DVBnEwREQvBzspBJkCEbRa8GxU1lghYcaGJCnRWibjDXlq779X1/y5xwg==
 
 inflight@^1.0.4:
   version "1.0.6"
