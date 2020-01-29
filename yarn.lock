@@ -781,9 +781,9 @@ cli-progress@^3.4.0:
     string-width "^2.1.1"
 
 cli-ux@^5.2.1:
-  version "5.4.2"
-  resolved "https://registry.yarnpkg.com/cli-ux/-/cli-ux-5.4.2.tgz#ac3187db44ccfae85681adba3aa4e426d0b2eff4"
-  integrity sha512-DdebO9mCNjY0+rtzucZ3GcAaW5iI/2DFFSUU/R9Dx5ubnOa8gFb2+4gh7NqZCL/jL0zZgW7UFcKvYADi0WHI1Q==
+  version "5.4.4"
+  resolved "https://registry.yarnpkg.com/cli-ux/-/cli-ux-5.4.4.tgz#de0c73825f6716d9562a79bd6552f032ac37465a"
+  integrity sha512-e7h613CIvIbuZk30T4F7jHQTmG7MMjp2V9BARWktOGMKWXr7DJXakG2JeeYPjRhmVqUSQP3xEJZAVoTwVKDZqw==
   dependencies:
     "@oclif/command" "^1.5.1"
     "@oclif/errors" "^1.2.1"
