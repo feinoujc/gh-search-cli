@@ -46,13 +46,7 @@ export default class Repositories extends Command {
 			user: flags.string({
 				char: 'u',
 				description:
-					'Limits searches to a specific user. Use --current-user to filter on current github username',
-			}),
-			'current-user': flags.boolean({
-				allowNo: false,
-				hidden: true,
-				description:
-					'Limits searches to a the current git user for the --user value.',
+					'Limits searches to a specific user. Use @me for your username.',
 			}),
 			repo: flags.string({
 				char: 'r',

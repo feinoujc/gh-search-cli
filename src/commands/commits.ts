@@ -61,10 +61,7 @@ export default class Code extends Command {
 			}),
 			user: flags.string({
 				description:
-					'Limits searches to a specific user. Use --current-user to use the currently configured git username.',
-			}),
-			'current-user': flags.boolean({
-				hidden: true,
+					'Limits searches to a specific user. Use @me for your username.',
 			}),
 			org: flags.string({
 				description: 'Limits searches to a specific organization.',

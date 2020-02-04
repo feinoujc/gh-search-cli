@@ -2,7 +2,6 @@ import { expect, test } from '@oclif/test';
 import * as sinon from 'sinon';
 
 import AuthFile from '../../src/auth-file';
-import _git from '../../src/git-user-name';
 import _opener from '../../src/opener';
 import _paginator from '../../src/pagination';
 import { random } from '../helpers/utils';
@@ -174,28 +173,6 @@ describe('ghs commands', () => {
 				.stdout()
 				.command([...args])
 				.it('fails on empty command');
-		});
-
-		describe('--current-x flags', () => {
-			beforeEach(() => {
-				sandbox.stub(_git, 'getUser').callsFake(() => 'feinoujc');
-			});
-
-			test
-				.nock('https://api.github.com', api =>
-					api
-						.get('/search/repositories')
-						.query({ q: 'user:feinoujc' })
-						.reply(
-							200,
-							require('../__fixtures__/commands_repositories_runs_repo_user_feinoujc'),
-						),
-				)
-				.stdout()
-				.command([...args, '--current-user'])
-				.it('includes the current git user', ctx => {
-					expect(ctx.stdout).to.be.contain('gh-search-cli');
-				});
 		});
 	});
 

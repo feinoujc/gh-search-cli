@@ -18,19 +18,19 @@ jobs:
       - uses: actions/cache@v1
         with:
           path: node_modules
-          key: ${{ runner.OS }}-build-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: yarn
-      - run: yarn build
+      - run: npm ci
+      - run: npm run build
       - name: smoke test cli
         run: |
           ./bin/run --version
           ./bin/run --help
-      - run: yarn test
+      - run: npm test
       - name: upload coverage to codecov
         uses: codecov/codecov-action@v1
         with:

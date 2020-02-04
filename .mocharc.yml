@@ -1,0 +1,9 @@
+extension:
+  - ts
+forbid-only: true
+recursive: true
+reporter: spec
+require: 'ts-node/register'
+timeout: 20000
+watch-files:
+  - '**/*.ts'
