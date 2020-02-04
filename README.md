@@ -27,7 +27,7 @@ $ npm install -g gh-search-cli
 $ ghs COMMAND
 running command...
 $ ghs (-v|--version|version)
-gh-search-cli/2.5.0 darwin-x64 node-v10.17.0
+gh-search-cli/3.0.0 darwin-x64 node-v12.14.1
 $ ghs --help [COMMAND]
 USAGE
   $ ghs COMMAND
@@ -64,8 +64,7 @@ OPTIONS
 
   -t, --text                   Show full text match
 
-  -u, --user=user              Limits searches to a specific user. Use --current-user to use the currently configured
-                               git username.
+  -u, --user=user              Limits searches to a specific user. Use @me for your username
 
   --api-base-url=api-base-url  The github api token. Defaults to configured GHE url or 'https://api.github.com'
 
@@ -88,7 +87,7 @@ EXAMPLE
   $ ghs code --extension js "import _ from 'lodash'"
 ```
 
-_See code: [src/commands/code.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.5.0/src/commands/code.ts)_
+_See code: [src/commands/code.ts](https://github.com/feinoujc/gh-search-cli/blob/v3.0.0/src/commands/code.ts)_
 
 ## `ghs commits [QUERY]`
 
@@ -142,14 +141,13 @@ OPTIONS
 
   --tree=tree                              Matches commits with the specified git tree hash.
 
-  --user=user                              Limits searches to a specific user. Use --current-user to use the currently
-                                           configured git username.
+  --user=user                              Limits searches to a specific user. Use @me for your username.
 
 EXAMPLE
   $ ghs commit --repo octocat/Spoon-Knife css
 ```
 
-_See code: [src/commands/commits.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.5.0/src/commands/commits.ts)_
+_See code: [src/commands/commits.ts](https://github.com/feinoujc/gh-search-cli/blob/v3.0.0/src/commands/commits.ts)_
 
 ## `ghs config`
 
@@ -169,7 +167,7 @@ EXAMPLE
   config cleared
 ```
 
-_See code: [src/commands/config.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.5.0/src/commands/config.ts)_
+_See code: [src/commands/config.ts](https://github.com/feinoujc/gh-search-cli/blob/v3.0.0/src/commands/config.ts)_
 
 ## `ghs help [COMMAND]`
 
@@ -186,7 +184,7 @@ OPTIONS
   --all  see all commands in CLI
 ```
 
-_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v2.2.1/src/commands/help.ts)_
+_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v2.2.3/src/commands/help.ts)_
 
 ## `ghs issues [QUERY]`
 
@@ -221,8 +219,7 @@ OPTIONS
   -u, --updated=updated                                Filters issues or pull requests based on date of creation, or
                                                        when they were last updated.
 
-  -u, --user=user                                      Limits searches to a specific user. Use --current-user to use the
-                                                       currently configured git username.
+  -u, --user=user                                      Limits searches to a specific user. Use @me for your username.
 
   --SHA=SHA                                            If you know the specific SHA hash of a commit, you can use it to
                                                        search for pull requests that contain that SHA. The SHA syntax
@@ -237,11 +234,10 @@ OPTIONS
                                                        archived repository.
 
   --assignee=assignee                                  Finds issues or pull requeststhat are assigned to a certain user.
-                                                       Use --current-author to use the currently configured git
-                                                       username.
+                                                       Use @me for your username.
 
-  --author=author                                      Finds issues or pull requests created by a certain user. Use
-                                                       --current-author to use the currently configured git username.
+  --author=author                                      Finds issues or pull requests created by a certain user. Use @me
+                                                       for your username.
 
   --base=base                                          Filters pull requests based on the branch that they came from.
 
@@ -249,8 +245,7 @@ OPTIONS
                                                        closed.
 
   --commenter=commenter                                Finds issues or pull requests that a certain user commented on.
-                                                       Use --current-commenter to use the currently configured git
-                                                       username.
+                                                       Use @me for your username.
 
   --comments=comments                                  Filters issues or pull requests based on the quantity of
                                                        comments.
@@ -269,8 +264,7 @@ OPTIONS
 
   --involves=involves                                  Finds issues or pull requests that were either created by a
                                                        certain user, assigned to that user, mention that user, or were
-                                                       commented on by that user. Use --current-involves to use the
-                                                       currently configured git username.
+                                                       commented on by that user. Use @me for your username.
 
   --is=is                                              Searches for items within repositories that match a certain
                                                        state, such as open, closed, or merged
@@ -278,7 +272,7 @@ OPTIONS
   --label=label                                        Filters issues or pull requests based on their labels.
 
   --mentions=mentions                                  Finds issues or pull requests that mention a certain user. Use
-                                                       --current-author to use the currently configured git username.
+                                                       @me for your username.
 
   --milestone=milestone                                Finds issues or pull requests that are a part of a milestone
                                                        within a repository.
@@ -315,7 +309,7 @@ EXAMPLE
   $ ghs issues --is open --involves my-github-username
 ```
 
-_See code: [src/commands/issues.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.5.0/src/commands/issues.ts)_
+_See code: [src/commands/issues.ts](https://github.com/feinoujc/gh-search-cli/blob/v3.0.0/src/commands/issues.ts)_
 
 ## `ghs notifications`
 
@@ -350,7 +344,7 @@ OPTIONS
   --repo=repo                  Filter notifications to a repository, required with --owner flag
 ```
 
-_See code: [src/commands/notifications.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.5.0/src/commands/notifications.ts)_
+_See code: [src/commands/notifications.ts](https://github.com/feinoujc/gh-search-cli/blob/v3.0.0/src/commands/notifications.ts)_
 
 ## `ghs repositories [QUERY]`
 
@@ -380,8 +374,7 @@ OPTIONS
 
   -s, --sort=(stars|forks|updated)         The sort field. Default: results are sorted by best match.
 
-  -u, --user=user                          Limits searches to a specific user. Use --current-user to filter on current
-                                           github username
+  -u, --user=user                          Limits searches to a specific user. Use @me for your username.
 
   --api-base-url=api-base-url              The github api token. Defaults to configured GHE url or
                                            'https://api.github.com'
@@ -429,5 +422,5 @@ EXAMPLE
      GoogleChrome/puppeteer (https://github.com/GoogleChrome/puppeteer)
 ```
 
-_See code: [src/commands/repositories.ts](https://github.com/feinoujc/gh-search-cli/blob/v2.5.0/src/commands/repositories.ts)_
+_See code: [src/commands/repositories.ts](https://github.com/feinoujc/gh-search-cli/blob/v3.0.0/src/commands/repositories.ts)_
 <!-- commandsstop -->
