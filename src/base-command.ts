@@ -85,7 +85,7 @@ export default abstract class BaseCommand extends Command {
 	abstract format(data: ApiResponse, opts?: FormatOptions): TableResult;
 
 	async run() {
-		const { args, flags } = this.parse(this.constructor as any);
+		const { args, flags } = this.parse(this.constructor as typeof Command);
 
 		const qs: Array<string> = [];
 		if (args.query) {
@@ -108,7 +108,6 @@ export default abstract class BaseCommand extends Command {
 
 		if (qs.length === 0) {
 			this._help();
-			return this.exit(-1);
 		}
 		const authFile = new AuthFile(this.config);
 		const authConfig = await authFile.getConfig();
