@@ -1,7 +1,7 @@
 {
   "name": "gh-search-cli",
   "description": "github.com search cli",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "author": "feinoujc @feinoujc",
   "bin": {
     "ghs": "./bin/run"
