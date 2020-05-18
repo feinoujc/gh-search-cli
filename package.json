@@ -25,7 +25,7 @@
     "@oclif/nyc-config": "1",
     "@oclif/test": "^1.2.4",
     "@types/chai": "^4.1.2",
-    "@types/fs-extra": "^8.0.0",
+    "@types/fs-extra": "^9.0.0",
     "@types/git-user-name": "^2.0.0",
     "@types/mocha": "^7.0.1",
     "@types/nock": "^9.1.2",
