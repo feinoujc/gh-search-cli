@@ -41,7 +41,7 @@
     "eslint-config-prettier": "^6.7.0",
     "globby": "^11.0.0",
     "mocha": "^8.0.1",
-    "nock": "^12.0.1",
+    "nock": "^13.0.0",
     "nyc": "^15.0.0",
     "prettier": "^2.0.2",
     "sinon": "^9.0.0",
