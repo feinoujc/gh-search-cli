@@ -49,10 +49,12 @@ async function fetchAndAssignSubjectHtmlUrl(
 			},
 			url: subject.latest_comment_url || subject.url,
 		});
+		// eslint-disable-next-line camelcase
 		Object.assign(subject, { latest_comment_html_url: body.html_url });
 	} catch (error) {
 		// can fail on permissions issues
 		if (error instanceof StatusCodeError && error.statusCode === 404) {
+			// eslint-disable-next-line camelcase
 			Object.assign(subject, { latest_comment_html_url: null });
 			return;
 		}
