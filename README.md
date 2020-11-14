@@ -27,7 +27,7 @@ $ npm install -g gh-search-cli
 $ ghs COMMAND
 running command...
 $ ghs (-v|--version|version)
-gh-search-cli/3.0.0 darwin-x64 node-v12.14.1
+gh-search-cli/3.1.0 darwin-x64 node-v12.19.0
 $ ghs --help [COMMAND]
 USAGE
   $ ghs COMMAND
@@ -87,7 +87,7 @@ EXAMPLE
   $ ghs code --extension js "import _ from 'lodash'"
 ```
 
-_See code: [src/commands/code.ts](https://github.com/feinoujc/gh-search-cli/blob/v3.0.0/src/commands/code.ts)_
+_See code: [src/commands/code.ts](https://github.com/feinoujc/gh-search-cli/blob/v3.1.0/src/commands/code.ts)_
 
 ## `ghs commits [QUERY]`
 
@@ -147,7 +147,7 @@ EXAMPLE
   $ ghs commit --repo octocat/Spoon-Knife css
 ```
 
-_See code: [src/commands/commits.ts](https://github.com/feinoujc/gh-search-cli/blob/v3.0.0/src/commands/commits.ts)_
+_See code: [src/commands/commits.ts](https://github.com/feinoujc/gh-search-cli/blob/v3.1.0/src/commands/commits.ts)_
 
 ## `ghs config`
 
@@ -167,7 +167,7 @@ EXAMPLE
   config cleared
 ```
 
-_See code: [src/commands/config.ts](https://github.com/feinoujc/gh-search-cli/blob/v3.0.0/src/commands/config.ts)_
+_See code: [src/commands/config.ts](https://github.com/feinoujc/gh-search-cli/blob/v3.1.0/src/commands/config.ts)_
 
 ## `ghs help [COMMAND]`
 
@@ -184,7 +184,7 @@ OPTIONS
   --all  see all commands in CLI
 ```
 
-_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v2.2.3/src/commands/help.ts)_
+_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.0/src/commands/help.ts)_
 
 ## `ghs issues [QUERY]`
 
@@ -309,7 +309,7 @@ EXAMPLE
   $ ghs issues --is open --involves my-github-username
 ```
 
-_See code: [src/commands/issues.ts](https://github.com/feinoujc/gh-search-cli/blob/v3.0.0/src/commands/issues.ts)_
+_See code: [src/commands/issues.ts](https://github.com/feinoujc/gh-search-cli/blob/v3.1.0/src/commands/issues.ts)_
 
 ## `ghs notifications`
 
@@ -344,7 +344,7 @@ OPTIONS
   --repo=repo                  Filter notifications to a repository, required with --owner flag
 ```
 
-_See code: [src/commands/notifications.ts](https://github.com/feinoujc/gh-search-cli/blob/v3.0.0/src/commands/notifications.ts)_
+_See code: [src/commands/notifications.ts](https://github.com/feinoujc/gh-search-cli/blob/v3.1.0/src/commands/notifications.ts)_
 
 ## `ghs repositories [QUERY]`
 
@@ -422,5 +422,5 @@ EXAMPLE
      GoogleChrome/puppeteer (https://github.com/GoogleChrome/puppeteer)
 ```
 
-_See code: [src/commands/repositories.ts](https://github.com/feinoujc/gh-search-cli/blob/v3.0.0/src/commands/repositories.ts)_
+_See code: [src/commands/repositories.ts](https://github.com/feinoujc/gh-search-cli/blob/v3.1.0/src/commands/repositories.ts)_
 <!-- commandsstop -->
