@@ -86,9 +86,40 @@ describe('ghs commands', () => {
 			.it('runs repo --user oclif w/paging', ctx => {
 				expect(ctx.stdout).to.contain('oclif/command');
 				expect(ctx.stdout).to.contain('oclif/oclif');
-				expect(
-					(_paginator.next as sinon.SinonStub).callCount,
-				).to.be.greaterThan(0);
+			});
+
+			test
+			.nock('https://api.github.com', api =>
+				api
+					.get('/search/repositories')
+					.query({ q: 'user:oclif' })
+					.reply(
+						200,
+						require('../__fixtures__/commands_repositories_runs_repo_user_oclif_page1'),
+						{
+							'X-Ratelimit-Limit': '30',
+							'X-Ratelimit-Remaining': '3',
+							'X-Ratelimit-Reset': String(new Date().valueOf() / 1000),
+							Link:
+								'<https://api.github.com/search/repositories?q=user%3Aoclif&page=2>; rel="next", <https://api.github.com/search/repositories?q=user%3Aoclif&page=2>; rel="last"',
+						},
+					)
+					.get('/search/repositories')
+					.query({ q: 'user:oclif', page: 2 })
+					.reply(
+						200,
+						require('../__fixtures__/commands_repositories_runs_repo_user_oclif_page2'),
+						{
+							Link:
+								'<https://api.github.com/search/repositories?q=user%3Aoclif&page=1>; rel="prev", <https://api.github.com/search/repositories?q=user%3Aoclif&page=1>; rel="first"',
+						},
+					),
+			)
+			.stdout()
+			.command([...args, '--user', 'oclif'])
+			.it('runs repo --user oclif w/rate limiting', ctx => {
+				expect(ctx.stdout).to.contain('oclif/command');
+				expect(ctx.stdout).to.contain('oclif/oclif');
 			});
 
 		describe('opener flag', () => {

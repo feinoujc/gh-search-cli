@@ -9,6 +9,7 @@ import opener from './opener';
 import paginator from './pagination';
 
 export type FormatOptions = {
+	piped: boolean;
 	text: boolean;
 	open: boolean;
 	json: boolean;
@@ -133,13 +134,25 @@ export default abstract class BaseCommand extends Command {
 				this.log(JSON.stringify(resp.items));
 			} else {
 				const { rows, columns, options } = this.format(resp, opts);
-				cli.table(rows, columns, options);
+				cli.table(rows, columns, { ...options, 'no-header': opts.piped });
 			}
 		};
 
 		const next = async (results: ApiResponse, opts: FormatOptions) => {
 			if (!opts.json && results.links.next) {
-				await paginator.next();
+				if (opts.piped) {
+					// if we get past 5 we tend to trigger abuse detection
+					// so we back off if we fall below that
+					if (results.rate.remaining < 5) {
+						const waitFor =
+							Math.max(results.rate.reset.valueOf() - new Date().valueOf(), 0) +
+							100;
+						this.debug(`waiting for ${waitFor} before next api call`);
+						await new Promise((resolve) => setTimeout(resolve, waitFor));
+					}
+				} else {
+					await paginator.next();
+				}
 				const resp = await results.links.next();
 				await print(resp, opts);
 				await next(resp, opts);
@@ -147,6 +160,7 @@ export default abstract class BaseCommand extends Command {
 		};
 
 		const opts: FormatOptions = {
+			piped: !process.stdout.isTTY,
 			open,
 			json,
 			text,
