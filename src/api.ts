@@ -15,6 +15,11 @@ export type ApiResponse = {
 	links: {
 		[rel: string]: () => Promise<ApiResponse>;
 	};
+	rate: {
+		limit: number;
+		remaining: number;
+		reset: Date;
+	};
 };
 
 const baseOpts = {
@@ -46,7 +51,16 @@ function parseResponse(resp: any, opts: ApiOptions): ApiResponse {
 		});
 		return parseResponse(res, opts);
 	}
-	const result = { items: resp.body.items, links: {} };
+	const result = {
+		items: resp.body.items,
+		links: {},
+		rate: {
+			limit: resp.headers['x-ratelimit-limit'] || Number.MAX_SAFE_INTEGER,
+			remaining:
+				resp.headers['x-ratelimit-remaining'] || Number.MAX_SAFE_INTEGER,
+			reset: new Date((resp.headers['x-ratelimit-reset'] || 0) * 1000),
+		},
+	};
 	if (resp.headers.link) {
 		const links = headerParser(resp.headers.link) as headerParser.Links;
 		result.links = Object.entries(links).reduce(
