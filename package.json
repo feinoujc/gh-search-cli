@@ -40,7 +40,7 @@
     "eslint": "^7.11.0",
     "eslint-config-oclif": "^3.1.0",
     "eslint-config-oclif-typescript": "^0.2.0",
-    "eslint-config-prettier": "^7.0.0",
+    "eslint-config-prettier": "^8.1.0",
     "globby": "^11.0.0",
     "mocha": "^8.0.1",
     "nock": "^13.0.2",
