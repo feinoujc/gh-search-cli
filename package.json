@@ -13,7 +13,7 @@
     "@oclif/parser": "^3.8.4",
     "@oclif/plugin-help": "3",
     "chalk": "^4.0.0",
-    "cli-ux": "^5.2.1",
+    "cli-ux": "^6.0.6",
     "fs-extra": "^10.0.0",
     "parse-link-header": "^1.0.1",
     "request": "^2.85.0",
