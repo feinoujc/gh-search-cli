@@ -15,7 +15,7 @@
     "chalk": "^4.0.0",
     "cli-ux": "^6.0.6",
     "fs-extra": "^10.0.0",
-    "parse-link-header": "^1.0.1",
+    "parse-link-header": "^2.0.0",
     "request": "^2.85.0",
     "request-promise-native": "^1.0.5",
     "tslib": "^2.0.0"
