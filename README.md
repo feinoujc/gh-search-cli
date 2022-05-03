@@ -1,6 +1,6 @@
 # NO LONGER MAINTAINED 
 
-The [GitHub CLI](https://cli.github.com/) has added functionality similar to this library (`gh search issues, ...`, so just use that instead.
+The [GitHub CLI](https://cli.github.com/) has added functionality similar to this library (`gh search issues, ...`), so just use that instead.
 
 gh-search-cli
 =============
