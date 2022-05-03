@@ -1,3 +1,7 @@
+# NO LONGER MAINTAINED 
+
+The [GitHub CLI](https://cli.github.com/) has added functionality similar to this library (`gh search issues, ...`, so just use that instead.
+
 gh-search-cli
 =============
 Provides a cli for searching github.com. Supports repositories, code, issues and commits. Can be configured for github enterprise instances as well. Built using [oclif](https://github.com/oclif/oclif)
